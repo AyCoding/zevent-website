@@ -1,0 +1,33 @@
+<script setup lang="ts">
+
+</script>
+
+<template>
+<header class="flex justify-between px-14 pt-6 fixed w-full z-50">
+  <div class="left flex gap-4">
+    <CTANav to="/">Accueil</CTANav>
+    <CTANav to="/associations">Associations</CTANav>
+    <CTANav to="/streamers">Streamers</CTANav>
+    <CTANav to="/clips">Clips</CTANav>
+    <CTANav to="/">Statistiques</CTANav>
+  </div>
+  <div class="right flex gap-4">
+    <CTANavExternal>ZPlace</CTANavExternal>
+    <CTANavExternal>Concert</CTANavExternal>
+    <CTAMain>Boutique</CTAMain>
+    <CTASpecial>Faire un don</CTASpecial>
+  </div>
+</header>
+<div class="protection"></div>
+</template>
+
+<style scoped>
+.protection {
+  width: 100%;
+  height: 240px;
+  position: fixed;
+  top: 0;
+  background: linear-gradient(180deg, #18181B 27.29%, rgba(24, 24, 27, 0.00) 100%);
+  z-index: 1;
+}
+</style>

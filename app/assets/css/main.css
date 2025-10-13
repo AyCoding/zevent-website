@@ -1,1 +1,21 @@
+@import url('https://api.fontshare.com/v2/css?f[]=switzer@1&display=swap');
+
 @import "tailwindcss";
+
+:root {
+    --Z: #02E869;
+    --Bg-1: #000000;
+    --Bg-2: #16161B;
+    --Bg-3: #292931;
+    --Fg-1: #FFFFFF;
+
+    --Stroke: linear-gradient(94deg, rgba(255, 255, 255, 0.20) 6.02%, rgba(255, 255, 255, 0.10) 97.17%);
+}
+
+body {
+    font-family: 'Switzer', sans-serif;
+    background: linear-gradient(180deg, #18181B 0%, #000 100%);
+    /*background: #18181B;*/
+    color: #FFF;
+    min-height: 4000px;
+}

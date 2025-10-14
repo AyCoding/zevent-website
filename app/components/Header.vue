@@ -17,6 +17,9 @@
     </div>
   </header>
   <div class="protection"></div>
+  <div class="logo">
+    <img src="/Logo-small.png" alt="" class="" />
+  </div>
 </template>
 
 <style scoped>
@@ -30,5 +33,18 @@ header {
   top: 0;
   background: linear-gradient(180deg, #18181b 27.29%, rgba(24, 24, 27, 0) 100%);
   z-index: 1000;
+}
+
+.logo {
+  position: fixed; /* TODO: A changer en sticky*/
+  z-index: 1200;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  img {
+    margin: 0 auto;
+    z-index: 0;
+  }
 }
 </style>

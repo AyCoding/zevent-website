@@ -6,10 +6,6 @@ useHead({
 
 <template>
   <div class="lcd"></div>
-
-  <div class="logo">
-    <img src="/Logo-small.png" alt="" class="" />
-  </div>
   <div class="hero-video">
     <video src="/HEADER-ZEVENT.mp4" autoplay muted loop></video>
     <div class="hero-content">
@@ -94,18 +90,5 @@ useHead({
     line-height: 100%; /* 80px */
     letter-spacing: -4px;
   }
-}
-
-.logo {
-  position: fixed; /* TODO: A changer en sticky*/
-  z-index: 1200;
-  top: 8px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-img {
-  margin: 0 auto;
-  z-index: 0;
 }
 </style>

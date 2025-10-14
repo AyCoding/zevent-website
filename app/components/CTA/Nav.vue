@@ -1,13 +1,11 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
-<NuxtLink to="/">
-  <div class="cta-nav">
-    <slot/>
-  </div>
-</NuxtLink>
+  <NuxtLink to="/">
+    <div class="cta-nav">
+      <slot />
+    </div>
+  </NuxtLink>
 </template>
 
 <style scoped>
@@ -36,8 +34,8 @@
   padding: 1px;
   background: var(--Stroke);
   -webkit-mask:
-      linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
@@ -46,7 +44,8 @@
   transition: opacity 0.2s;
 }
 
-.cta-nav:hover::after, .cta-nav:hover {
+.cta-nav:hover::after,
+.cta-nav:hover {
   opacity: 1;
 }
 </style>

@@ -1,11 +1,9 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <NuxtLink to="/">
     <div class="cta-special">
-      <slot/>
+      <slot />
     </div>
   </NuxtLink>
 </template>
@@ -13,7 +11,7 @@
 <style scoped>
 .cta-special {
   display: flex;
-  color: #18181B;
+  color: #18181b;
   justify-content: center;
   align-items: center;
   width: fit-content;
@@ -25,11 +23,11 @@
   font-weight: 600;
   line-height: 20px; /* 133.333% */
   letter-spacing: -0.3px;
-  background-color: #02E869;
+  background-color: #02e869;
   opacity: 0.8;
 }
 .cta-special:hover {
-  outline: 1px solid rgba(24, 24, 27, 0.20);
+  outline: 1px solid rgba(24, 24, 27, 0.2);
   opacity: 1;
 }
 </style>

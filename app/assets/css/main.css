@@ -17,10 +17,10 @@ body {
     background: linear-gradient(180deg, #18181B 0%, #000 100%);
     /*background: #18181B;*/
     color: #FFF;
-    min-height: 4000px;
+    /*min-height: 4000px;*/
 }
 
-html {
+html, * {
     scroll-behavior: smooth;
 }
 

@@ -5,8 +5,7 @@ useHead({
 </script>
 
 <template>
-  <div class="lcd"></div>
-  <div class="hero-video">
+  <div id="top" class="hero-video">
     <video src="/HEADER-ZEVENT.mp4" autoplay muted loop></video>
     <div class="hero-content px-4">
       <h1>L'évènement caritatif qui récolte des fonds pour la solidarité</h1>
@@ -55,7 +54,7 @@ useHead({
       </p>
     </div>
   </section>
-  <section class="py-25 h-screen">
+  <section class="py-25 min-h-screen">
     <h1 class="font-medium text-[88px] leading-20 tracking-tight text-center">
       Historique
     </h1>
@@ -67,6 +66,42 @@ useHead({
         <TimelineCard />
         <TimelineCard />
       </div>
+    </div>
+  </section>
+  <section class="flex max-w-7xl mx-auto px-4 py-70 mt-48 gap-20">
+    <div class="flex flex-col gap-10 w-full max-w-[600px]">
+      <h1 class="font-medium text-[88px] leading-20 tracking-tight">
+        ./ La collecte du <span class="text-Z">ZEvent</span>
+      </h1>
+      <p>
+        Chaque année, les associations bénéficiaires sont sélectionnées avec
+        soin grâce à l’aide de la Fondation de France, selon 3 critères :
+      </p>
+      <ul class="list-disc pl-4">
+        <li>Fiabilité et transparence</li>
+        <li>
+          Capacité structurelle à recevoir et gérer efficacement les sommes
+          collectées
+        </li>
+        <li>Projets concrets et orientés vers l’intérêt général</li>
+      </ul>
+    </div>
+    <div class="flex flex-col gap-10 w-full max-w-[600px]">
+      <p>
+        ZEvent n’est pas une association ! <br />
+        C’est un événement qui réunit des streamers pour lever des fonds au
+        profit d’organisations humanitaires. L’organisation et les streamers ne
+        sont jamais intermédiaires de collecte.
+      </p>
+      <p>
+        Les dons vont directement à la Fondation de France, qui collecte et
+        redistribue les fonds aux associations sélectionnées.
+      </p>
+      <p>
+        Après l'événement chaque donateur reçoit un email de la Fondation de
+        France pour obtenir son reçu fiscal. Vos dons sont déductibles à 66 % de
+        votre impôt sur le revenu, ne l'oubliez pas !
+      </p>
     </div>
   </section>
 </template>
@@ -88,17 +123,6 @@ useHead({
     rgba(0, 0, 0, 0) 100%
   );
   /*z-index: 2;*/
-}
-
-.lcd {
-  background-image: url("/lcd.png");
-  width: 100%;
-  height: 1920px; /* */
-  position: fixed;
-  top: 0;
-  mix-blend-mode: overlay;
-
-  z-index: -1;
 }
 
 .hero-video video {

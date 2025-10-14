@@ -19,3 +19,11 @@ body {
     color: #FFF;
     min-height: 4000px;
 }
+
+html {
+    scroll-behavior: smooth;
+}
+
+.text-Z {
+    color: var(--Z);
+}

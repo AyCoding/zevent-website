@@ -7,7 +7,7 @@
       <CTANav to="/associations">Associations</CTANav>
       <CTANav to="/streamers">Streamers</CTANav>
       <CTANav to="/clips">Clips</CTANav>
-      <CTANav to="/">Statistiques</CTANav>
+      <CTANav to="/statistiques">Statistiques</CTANav>
     </div>
     <div class="right flex gap-4">
       <CTANavExternal to="https://place.zevent.fr/">ZPlace</CTANavExternal>

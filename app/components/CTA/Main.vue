@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <NuxtLink to="/" target="_blank">
+  <NuxtLink to="/">
     <div class="cta-main">
       <slot />
     </div>

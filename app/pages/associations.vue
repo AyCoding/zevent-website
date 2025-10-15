@@ -20,9 +20,9 @@ useHead({
           Vie, L'Envol et Sparadrap).
         </p>
 
-        <CTAMain to="https://www.fondationdefrance.org/fr/"
-          >Site officiel</CTAMain
-        >
+        <CTAMain to="https://www.fondationdefrance.org/fr/" target="_blank">
+          Site officiel
+        </CTAMain>
       </div>
       <div class="p-11">
         <div class="flex flex-col gap-6">

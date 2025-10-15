@@ -10,10 +10,12 @@
       <CTANav to="/">Statistiques</CTANav>
     </div>
     <div class="right flex gap-4">
-      <CTANavExternal>ZPlace</CTANavExternal>
-      <CTANavExternal>Concert</CTANavExternal>
-      <CTAMain>Boutique</CTAMain>
-      <CTASpecial>Faire un don</CTASpecial>
+      <CTANavExternal to="https://place.zevent.fr/">ZPlace</CTANavExternal>
+      <CTANavExternal to="https://zevent.fr/concert">Concert</CTANavExternal>
+      <CTAMain to="https://boutique.zevent.fr/" target="_blank">
+        Boutique
+      </CTAMain>
+      <CTASpecial to="https://zevent.fr/don/">Faire un don</CTASpecial>
     </div>
   </header>
   <div class="protection"></div>

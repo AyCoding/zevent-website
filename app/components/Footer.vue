@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+</script>
 
 <template>
   <footer class="py-36">
@@ -17,7 +21,9 @@
     </div>
   </footer>
   <div class="flex justify-center pb-14">
-    <CTAGhost to="#top" class="w-fit">Haut de la page ↑</CTAGhost>
+    <CTAGhost @click="scrollToTop" to="#" class="w-fit">
+      Haut de la page ↑
+    </CTAGhost>
   </div>
 </template>
 

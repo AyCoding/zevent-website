@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <NuxtLink to="/">
+  <NuxtLink to="/" target="_blank">
     <div class="cta-main">
       <slot />
     </div>
@@ -14,7 +14,6 @@
   color: #18181b;
   justify-content: center;
   align-items: center;
-  width: fit-content;
   padding-inline: 1.5rem;
   height: 40px;
   gap: 0.5rem;

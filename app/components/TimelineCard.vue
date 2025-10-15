@@ -2,14 +2,14 @@
 
 <template>
   <div
-    class="flex flex-col w-full max-w-[400px] rounded-4xl outline outline-white/10 relative"
+    class="timeline flex flex-col w-full max-w-[400px] rounded-4xl outline outline-white/10 relative"
   >
-    <div class="image w-full h-[240px] rounded-t-4xl">
+    <div class="image w-full h-[240px] rounded-t-4xl overflow-hidden">
       <!--      Mettre une div de même taille pour ajouter le background gradient -->
       <img
         src="/zevent2024.png"
         alt=""
-        class="w-full h-full object-fill rounded-t-4xl"
+        class="w-full h-full object-cover scale-110 rounded-t-4xl"
       />
     </div>
     <div class="flex flex-col gap-6 p-8">
@@ -37,6 +37,22 @@
 </template>
 
 <style scoped>
+.timeline {
+  transition: 0.4s ease-out;
+
+  &:hover {
+    background: #000000;
+  }
+
+  img {
+    transition: 0.4s ease-out;
+  }
+  &:hover img {
+    transform: scale(1.05);
+    transition: 0.4s;
+  }
+}
+
 .image {
   background: linear-gradient(180deg, #000 23.75%, rgba(0, 0, 0, 0) 100%);
 }

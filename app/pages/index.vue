@@ -2,10 +2,16 @@
 useHead({
   title: "ZEVENT 2025",
 });
+
+function scrollToDiscover() {
+  window.document
+    .getElementById("decouvrir")
+    ?.scrollIntoView({ behavior: "smooth" });
+}
 </script>
 
 <template>
-  <div id="top" class="hero-video">
+  <div class="hero-video">
     <video src="/HEADER-ZEVENT.mp4" autoplay muted loop></video>
     <div class="hero-content px-4">
       <h1>L'évènement caritatif qui récolte des fonds pour la solidarité</h1>
@@ -24,7 +30,7 @@ useHead({
         </div>
       </div>
       <div class="mt-20">
-        <CTAMain to="#decouvrir">Découvrir l’événement</CTAMain>
+        <CTAMain @click="scrollToDiscover">Découvrir l’événement</CTAMain>
       </div>
     </div>
   </div>

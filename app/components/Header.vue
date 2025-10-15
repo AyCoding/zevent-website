@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <header class="flex justify-between px-14 pt-6 fixed w-full">
+  <header id="top" class="flex justify-between px-14 pt-6 fixed w-full">
     <div class="left flex gap-4">
       <CTANav to="/">Accueil</CTANav>
       <CTANav to="/associations">Associations</CTANav>

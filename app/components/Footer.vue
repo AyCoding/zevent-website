@@ -9,12 +9,21 @@ function scrollToTop() {
     <div class="flex flex-col items-center gap-11">
       <img src="/logo-secondary.png" alt="" />
       <div class="flex justify-center gap-3">
-        <CTAIcon src="/bluesky.svg" link="https://bsky.app/profile/zevent.fr" />
-        <CTAIcon src="/twitter.svg" link="https://twitter.com/zeventfr" />
-        <CTAIcon src="/insta.svg" link="https://www.instagram.com/zeventfr/" />
-        <CTAIcon src="/reddit.svg" link="https://www.reddit.com/r/zevent/" />
         <CTAIcon
-          src="/facebook.svg"
+          src="/icons/bluesky.svg"
+          link="https://bsky.app/profile/zevent.fr"
+        />
+        <CTAIcon src="/icons/twitter.svg" link="https://twitter.com/zeventfr" />
+        <CTAIcon
+          src="/icons/insta.svg"
+          link="https://www.instagram.com/zeventfr/"
+        />
+        <CTAIcon
+          src="/icons/reddit.svg"
+          link="https://www.reddit.com/r/zevent/"
+        />
+        <CTAIcon
+          src="/icons/facebook.svg"
           link="https://www.facebook.com/zeventofficiel/"
         />
       </div>

@@ -48,4 +48,10 @@
 .cta-nav:hover {
   opacity: 1;
 }
+
+.router-link-active .cta-nav,
+.router-link-exact-active .cta-nav {
+  outline: 1px solid #fff;
+  opacity: 1;
+}
 </style>

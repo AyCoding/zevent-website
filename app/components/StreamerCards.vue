@@ -1,25 +1,59 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import type { Streamer } from "~/types/streamer";
+
+defineProps<{
+  data: Streamer;
+}>();
+</script>
 
 <template>
-  <NuxtLink
-    to="https://www.twitch.tv/zerator"
+  <a
+    :href="data.twitch"
     target="_blank"
+    rel="noopener noreferrer"
     class="streamer-cards bg-[#080808] h-[400px] min-w-[280px] max-w-[400px] relative rounded-2xl overflow-hidden border border-white/10"
   >
-    <img src="/zerator.png" alt="" class="w-full h-full object-cover" />
+    <img
+      :src="data.photo"
+      alt=""
+      class="photo w-full h-full object-cover"
+      v-if="data.photo"
+    />
     <div class="p-4 absolute bottom-0 flex gap-2 z-10">
       <div class="avatar rounded-full">
-        <img src="/zerator-avatar.png" alt="" class="rounded-full" />
+        <img
+          :src="data.avatar"
+          alt=""
+          class="rounded-full"
+          width="56"
+          height="56"
+          v-if="data.photo"
+        />
       </div>
       <div class="flex flex-col gap-2">
-        <h4 class="text-[22px] font-semibold leading-[22px]">ZeratoR</h4>
-        <p class="cagnotte text-xs leading-4">9999 €</p>
+        <div class="flex gap-1">
+          <h4 class="text-[22px] font-semibold leading-[22px]">
+            {{ data.pseudo }}
+          </h4>
+          <img src="/online-yes.svg" alt="" v-if="data.online" />
+          <img src="/online-no.svg" alt="" v-else />
+        </div>
+        <p class="cagnotte text-xs leading-4 w-fit">{{ data.cagnotte }} €</p>
       </div>
     </div>
     <div
       class="streamer-bottom absolute bottom-0 w-full h-[200px] bg-green-700/20"
     ></div>
-  </NuxtLink>
+    <div v-if="!data.photo" class="w-full flex justify-center pt-[70px]">
+      <img
+        :src="data.avatar"
+        alt=""
+        class="rounded-full"
+        width="160"
+        height="160"
+      />
+    </div>
+  </a>
 </template>
 
 <style scoped>
@@ -52,7 +86,7 @@
   }
 }
 
-.streamer-cards:hover img {
+.streamer-cards:hover .photo {
   transform: scale(1.05);
   transition: 0.5s;
 }

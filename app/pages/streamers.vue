@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import { ref, onMounted, watchEffect } from "vue";
 import StreamerCards from "~/components/StreamerCards.vue";
+import type { Streamer } from "~/types/streamer";
 
 useHead({
   title: "ZEVENT 2025",
@@ -10,6 +12,49 @@ let onLive = ref(false);
 const buttonLive = () => {
   onLive.value = !onLive.value;
 };
+
+const streamers = ref<Streamer[]>([
+  {
+    pseudo: "Zerator",
+    avatar: "/zerator-avatar.png",
+    photo: "/zerator.png",
+    twitch: "https://www.twitch.tv/ZeratoR",
+    online: false,
+    cagnotte: 1154212,
+  },
+  {
+    pseudo: "Ultia",
+    avatar: "/ultia-avatar.png",
+    photo: "/ultia.png",
+    twitch: "https://www.twitch.tv/Ultia",
+    online: false,
+    cagnotte: 9999,
+  },
+  {
+    pseudo: "BastiUi",
+    avatar: "/bastiui-avatar.png",
+    photo: "",
+    twitch: "https://www.twitch.tv/BastiUi",
+    online: true,
+    cagnotte: 9999,
+  },
+  {
+    pseudo: "AntoineDaniel",
+    avatar: "/antoinedaniel-avatar.png",
+    photo: "",
+    twitch: "https://www.twitch.tv/AntoineDaniel",
+    online: true,
+    cagnotte: 9999,
+  },
+]);
+
+const sortStreamersAZ = () => {
+  streamers.value.sort((a, b) =>
+    a.pseudo.localeCompare(b.pseudo, "fr", { sensitivity: "base" }),
+  );
+};
+
+watchEffect(sortStreamersAZ);
 </script>
 
 <template>
@@ -51,18 +96,11 @@ const buttonLive = () => {
       </div>
     </div>
     <div class="container mx-auto px-20 grid grid-cols-4 gap-6 mt-8 pb-40">
-      <StreamerCards />
-      <StreamerCards />
-      <StreamerCards />
-      <StreamerCards />
-      <StreamerCards />
-      <StreamerCards />
-      <StreamerCards />
-      <StreamerCards />
-      <StreamerCards />
-      <StreamerCards />
-      <StreamerCards />
-      <StreamerCards />
+      <StreamerCards
+        v-for="streamer in streamers"
+        :key="streamer.pseudo"
+        :data="streamer"
+      />
     </div>
   </div>
 </template>

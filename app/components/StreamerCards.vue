@@ -38,7 +38,9 @@ defineProps<{
           <img src="/online-yes.svg" alt="" v-if="data.online" />
           <img src="/online-no.svg" alt="" v-else />
         </div>
-        <p class="cagnotte text-xs leading-4 w-fit">{{ data.cagnotte }} €</p>
+        <p class="cagnotte text-xs leading-4 w-fit">
+          {{ Intl.NumberFormat("fr-FR").format(Math.round(data.cagnotte)) }} €
+        </p>
       </div>
     </div>
     <div
@@ -48,7 +50,7 @@ defineProps<{
       <img
         :src="data.avatar"
         alt=""
-        class="rounded-full"
+        class="avatar-large rounded-full"
         width="160"
         height="160"
       />
@@ -86,7 +88,8 @@ defineProps<{
   }
 }
 
-.streamer-cards:hover .photo {
+.streamer-cards:hover .photo,
+.streamer-cards:hover .avatar-large {
   transform: scale(1.05);
   transition: 0.5s;
 }

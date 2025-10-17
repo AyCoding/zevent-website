@@ -20,7 +20,7 @@ const streamers = ref<Streamer[]>([
     photo: "/zerator.png",
     twitch: "https://www.twitch.tv/ZeratoR",
     online: false,
-    cagnotte: 1154212,
+    cagnotte: 1154211.58,
   },
   {
     pseudo: "Ultia",
@@ -28,7 +28,7 @@ const streamers = ref<Streamer[]>([
     photo: "/ultia.png",
     twitch: "https://www.twitch.tv/Ultia",
     online: false,
-    cagnotte: 9999,
+    cagnotte: 125685.25,
   },
   {
     pseudo: "BastiUi",
@@ -36,15 +36,31 @@ const streamers = ref<Streamer[]>([
     photo: "",
     twitch: "https://www.twitch.tv/BastiUi",
     online: true,
-    cagnotte: 9999,
+    cagnotte: 7713.45,
   },
   {
     pseudo: "AntoineDaniel",
     avatar: "/antoinedaniel-avatar.png",
     photo: "",
     twitch: "https://www.twitch.tv/AntoineDaniel",
-    online: true,
-    cagnotte: 9999,
+    online: false,
+    cagnotte: 1218838.44,
+  },
+  {
+    pseudo: "Etoiles",
+    avatar: "/etoiles-avatar.png",
+    photo: "",
+    twitch: "https://www.twitch.tv/etoiles",
+    online: false,
+    cagnotte: 201236.1,
+  },
+  {
+    pseudo: "BagheraJones",
+    avatar: "/bagz-avatar.png",
+    photo: "",
+    twitch: "https://www.twitch.tv/BagheraJones",
+    online: false,
+    cagnotte: 135326.78,
   },
 ]);
 

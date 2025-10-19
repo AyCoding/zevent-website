@@ -62,6 +62,22 @@ const streamers = ref<Streamer[]>([
     online: false,
     cagnotte: 135326.78,
   },
+  {
+    pseudo: "samueletienne",
+    avatar: "/samueletienne-avatar.png",
+    photo: "/samueletienne.png",
+    twitch: "https://www.twitch.tv/samueletienne",
+    online: false,
+    cagnotte: 403097.43,
+  },
+  {
+    pseudo: "Joyca",
+    avatar: "/joyca-avatar.png",
+    photo: "/joyca.png",
+    twitch: "https://www.twitch.tv/joyca",
+    online: false,
+    cagnotte: 305318.8,
+  },
 ]);
 
 const sortStreamersAZ = () => {

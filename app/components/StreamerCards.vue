@@ -46,15 +46,27 @@ defineProps<{
     <div
       class="streamer-bottom absolute bottom-0 w-full h-[200px] bg-green-700/20"
     ></div>
-    <div v-if="!data.photo" class="w-full flex justify-center pt-[70px]">
+    <div
+      v-if="!data.photo"
+      class="w-full flex justify-center pt-[70px] relative"
+    >
       <img
         :src="data.avatar"
         alt=""
-        class="avatar-large rounded-full"
+        class="avatar-large rounded-full z-10"
         width="160"
         height="160"
       />
     </div>
+    <template v-if="!data.photo">
+      <img
+        :src="data.avatar"
+        alt=""
+        class="blur-avatar rounded-full absolute top-[50%] translate-y-[-50%] z-0 blur-[32px] scale-125 opacity-30"
+        width="420"
+        height="420"
+      />
+    </template>
   </a>
 </template>
 
@@ -106,5 +118,10 @@ defineProps<{
     rgba(11, 28, 11, 0) 0%,
     rgba(0, 189, 0, 0.5) 100%
   );
+}
+
+.streamer-cards:hover .blur-avatar {
+  transition: 0.3s;
+  opacity: 0.5;
 }
 </style>

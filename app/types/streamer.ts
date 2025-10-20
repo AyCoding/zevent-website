@@ -5,4 +5,5 @@ export interface Streamer {
   twitch: string;
   online: boolean;
   cagnotte: number;
+  live?: boolean;
 }

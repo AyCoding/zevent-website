@@ -29,7 +29,7 @@ function scrollToTop() {
       </div>
     </div>
     <div class="flex justify-center pb-14">
-      <CTAGhost @click="scrollToTop" class="w-fit">
+      <CTAGhost @click="scrollToTop" to="#" class="w-fit">
         Haut de la page ↑
       </CTAGhost>
     </div>

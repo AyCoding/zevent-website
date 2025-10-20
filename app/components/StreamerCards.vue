@@ -13,6 +13,17 @@ defineProps<{
     rel="noopener noreferrer"
     class="streamer-cards bg-[#080808] h-[400px] min-w-[280px] max-w-[400px] relative rounded-2xl overflow-hidden border border-white/10"
   >
+    <div
+      class="flex flex-1 text-xs font-normal leading-4 absolute right-0 p-1 m-2 z-10"
+    >
+      <span v-if="!data.live" class="opacity-75">Offline</span>
+      <div v-else class="flex items-center gap-[1px]">
+        Live
+        <div class="flex justify-center items-center w-[16px] h-[16px]">
+          <span class="pulse-dot" aria-hidden="true"></span>
+        </div>
+      </div>
+    </div>
     <img
       :src="`/streamers-images${data.photo}`"
       alt=""
@@ -123,5 +134,44 @@ defineProps<{
 .streamer-cards:hover .blur-avatar {
   transition: 0.3s;
   opacity: 0.5;
+}
+
+/* Pulse dot */
+.pulse-dot {
+  width: 6px;
+  height: 6px;
+  background: #ff0000;
+  border-radius: 9999px;
+  position: relative;
+  display: inline-block;
+}
+
+.pulse-dot::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: #ff0000;
+  opacity: 0.6;
+  animation: pulse 1.6s ease-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+  }
+  70% {
+    transform: translate(-50%, -50%) scale(2.5);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 0;
+  }
 }
 </style>

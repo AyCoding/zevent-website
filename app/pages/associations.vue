@@ -45,6 +45,11 @@ const currentComponent = computed(() => {
 </script>
 
 <template>
+  <h1
+    class="fixed -z-10 text-[320px] font-normal leading-[400px] tracking-[-19.2px] opacity-50 mix-blend-overlay top-[56px] left-1/2 translate-x-[-50%]"
+  >
+    ./Associations
+  </h1>
   <div class="pt-[364px]">
     <div
       class="sticky top-[100px] z-[2000] flex justify-center mx-auto p-1 rounded-[48px] bg-[#292931] w-fit gap-[1px] border border-white/10 shadow-lg"

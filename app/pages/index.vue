@@ -76,6 +76,62 @@ const timelineData: Timeline[] = [
       },
     ],
   },
+  {
+    cover: "/zevent2024.png",
+    edition: 2024,
+    date: "05-08 septembre 2024",
+    amount_raised: 10145881,
+    charities: [
+      {
+        name_of_charity: "Les Bureaux du Coeur",
+        url: "https://www.bureauxducoeur.org/",
+      },
+      {
+        name_of_charity: "Solidarité Paysans",
+        url: "https://www.solidaritepaysans.org/",
+      },
+      {
+        name_of_charity: "Secours Populaire",
+        url: "https://www.secourspopulaire.fr/",
+      },
+      {
+        name_of_charity: "Chapitre 2",
+        url: "https://www.chapitre2-asso.org/",
+      },
+      {
+        name_of_charity: "Cop1",
+        url: "https://www.cop1.fr/",
+      },
+    ],
+  },
+  {
+    cover: "/zevent2024.png",
+    edition: 2024,
+    date: "05-08 septembre 2024",
+    amount_raised: 10145881,
+    charities: [
+      {
+        name_of_charity: "Les Bureaux du Coeur",
+        url: "https://www.bureauxducoeur.org/",
+      },
+      {
+        name_of_charity: "Solidarité Paysans",
+        url: "https://www.solidaritepaysans.org/",
+      },
+      {
+        name_of_charity: "Secours Populaire",
+        url: "https://www.secourspopulaire.fr/",
+      },
+      {
+        name_of_charity: "Chapitre 2",
+        url: "https://www.chapitre2-asso.org/",
+      },
+      {
+        name_of_charity: "Cop1",
+        url: "https://www.cop1.fr/",
+      },
+    ],
+  },
 ];
 </script>
 
@@ -137,21 +193,21 @@ const timelineData: Timeline[] = [
     <div class="relative">
       <div class="w-[80px] h-[1px] bg-white mx-auto mt-8 line"></div>
       <div class="vertical-line"></div>
-      <div class="flex flex-col items-center pr-[555px] gap-40">
-        <TimelineCard
-          v-for="(data, index) in timelineData.filter((_, i) => i % 2 === 0)"
-          :key="data.edition"
-          :timelineData="data"
-          position="right"
-        />
-      </div>
-      <div class="flex flex-col items-center pl-[555px] gap-40">
-        <TimelineCard
-          v-for="(data, index) in timelineData.filter((_, i) => i % 2 === 1)"
-          :key="data.edition"
-          :timelineData="data"
-          position="left"
-        />
+      <div class="flex flex-col items-center gap-40">
+        <div
+          v-for="(data, index) in timelineData"
+          :key="index + '-' + data.edition"
+          :class="
+            index % 2 === 0
+              ? 'w-full pr-[555px] flex justify-center'
+              : 'w-full pl-[555px] flex justify-center'
+          "
+        >
+          <TimelineCard
+            :timelineData="data"
+            :position="index % 2 === 0 ? 'right' : 'left'"
+          />
+        </div>
       </div>
     </div>
   </section>

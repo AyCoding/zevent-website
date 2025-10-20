@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { Timeline } from "~/types/timeline";
+
 useHead({
   title: "ZEVENT 2025",
 });
@@ -8,6 +10,73 @@ function scrollToDiscover() {
     .getElementById("decouvrir")
     ?.scrollIntoView({ behavior: "smooth" });
 }
+const timelineData: Timeline[] = [
+  {
+    cover: "/zevent2025.jpg",
+    edition: 2025,
+    date: "04-07 septembre 2025",
+    amount_raised: 16179096,
+    charities: [
+      {
+        name_of_charity: "Association Française des Aidants",
+        url: "https://www.aidants.fr/",
+      },
+      { name_of_charity: "Helebor", url: "https://www.helebor.fr/" },
+      {
+        name_of_charity: "La Ligue Contre le Cancer",
+        url: "https://www.ligue-cancer.net/",
+      },
+      {
+        name_of_charity: "Nightline",
+        url: "https://www.nightline.fr/",
+      },
+      {
+        name_of_charity: "Le Rire Médecin",
+        url: "https://www.leriremedecin.org/",
+      },
+      {
+        name_of_charity: "Sourire à la Vie",
+        url: "https://www.sourirealavie.fr/",
+      },
+      {
+        name_of_charity: "L'Envol",
+        url: "https://www.lenvol.asso.fr/",
+      },
+      {
+        name_of_charity: "Sparadrap",
+        url: "https://www.sparadrap.org/",
+      },
+    ],
+  },
+  {
+    cover: "/zevent2024.png",
+    edition: 2024,
+    date: "05-08 septembre 2024",
+    amount_raised: 10145881,
+    charities: [
+      {
+        name_of_charity: "Les Bureaux du Coeur",
+        url: "https://www.bureauxducoeur.org/",
+      },
+      {
+        name_of_charity: "Solidarité Paysans",
+        url: "https://www.solidaritepaysans.org/",
+      },
+      {
+        name_of_charity: "Secours Populaire",
+        url: "https://www.secourspopulaire.fr/",
+      },
+      {
+        name_of_charity: "Chapitre 2",
+        url: "https://www.chapitre2-asso.org/",
+      },
+      {
+        name_of_charity: "Cop1",
+        url: "https://www.cop1.fr/",
+      },
+    ],
+  },
+];
 </script>
 
 <template>
@@ -60,17 +129,16 @@ function scrollToDiscover() {
       </p>
     </div>
   </section>
-  <section class="py-25 min-h-screen">
+  <section class="py-25">
     <h1 class="font-medium text-[88px] leading-20 tracking-tight text-center">
       Historique
     </h1>
 
-    <div>
+    <div class="relative">
       <div class="w-[80px] h-[1px] bg-white mx-auto mt-8 line"></div>
       <div class="vertical-line"></div>
       <div class="flex flex-col items-center pr-[555px] gap-40">
-        <TimelineCard />
-        <TimelineCard />
+        <TimelineCard v-for="data in timelineData" :timelineData="data" />
       </div>
     </div>
   </section>
@@ -174,11 +242,10 @@ function scrollToDiscover() {
 
 .vertical-line {
   position: absolute;
-  /* top: 0; */
+  top: 0;
   left: 50%;
   width: 1px;
-  height: 1000px;
-  margin-inline: auto;
+  height: 100%;
   background: linear-gradient(180deg, #fff 50%, rgba(255, 255, 255, 0) 100%);
   transform: translateX(-50%);
 }

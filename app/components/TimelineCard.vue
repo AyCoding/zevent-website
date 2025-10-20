@@ -1,4 +1,17 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { computed } from "vue";
+import type { Timeline } from "~/types/timeline";
+
+const props = defineProps<{
+  timelineData: Timeline;
+}>();
+
+const cover = computed(() => props.timelineData.cover);
+const edition = computed(() => props.timelineData.edition);
+const date = computed(() => props.timelineData.date);
+const amount_raised = computed(() => props.timelineData.amount_raised);
+const charities = computed(() => props.timelineData.charities);
+</script>
 
 <template>
   <div
@@ -7,7 +20,7 @@
     <div class="image w-full h-[240px] rounded-t-4xl overflow-hidden">
       <!--      Mettre une div de même taille pour ajouter le background gradient -->
       <img
-        src="/zevent2024.png"
+        :src="cover"
         alt=""
         class="w-full h-full object-cover scale-110 rounded-t-4xl"
       />
@@ -16,17 +29,22 @@
       <div class="flex flex-col gap-1">
         <span
           class="text-xl leading-5 tracking-tighter font-bold text-[#02E869]"
-          >ZEVENT 2024</span
+          >ZEVENT {{ edition }}</span
         >
-        <p class="leading-4 text-[#838383] text-xs">05-08 septembre</p>
+        <p class="leading-4 text-[#838383] text-xs">{{ date }}</p>
       </div>
-      <p class="font-medium text-[56px] tracking-[-2.8px] pt-6">10 145 881 €</p>
+      <p class="font-medium text-[56px] tracking-[-2.8px] pt-6">
+        {{ Intl.NumberFormat("fr-FR").format(amount_raised) }}
+        €
+      </p>
       <div class="flex gap-1 pb-4 flex-wrap self-stretch">
-        <Association>Les Bureaux du Coeur</Association>
-        <Association>Solidarité Paysans</Association>
-        <Association>Secours Populaire</Association>
-        <Association>Chapitre 2</Association>
-        <Association>Cop1</Association>
+        <Association
+          v-for="charity in charities"
+          :to="charity.url"
+          target="_blank"
+        >
+          {{ charity.name_of_charity }}
+        </Association>
       </div>
       <CTAGhost>Voir le bilan</CTAGhost>
     </div>

@@ -138,7 +138,20 @@ const timelineData: Timeline[] = [
       <div class="w-[80px] h-[1px] bg-white mx-auto mt-8 line"></div>
       <div class="vertical-line"></div>
       <div class="flex flex-col items-center pr-[555px] gap-40">
-        <TimelineCard v-for="data in timelineData" :timelineData="data" />
+        <TimelineCard
+          v-for="(data, index) in timelineData.filter((_, i) => i % 2 === 0)"
+          :key="data.edition"
+          :timelineData="data"
+          position="right"
+        />
+      </div>
+      <div class="flex flex-col items-center pl-[555px] gap-40">
+        <TimelineCard
+          v-for="(data, index) in timelineData.filter((_, i) => i % 2 === 1)"
+          :key="data.edition"
+          :timelineData="data"
+          position="left"
+        />
       </div>
     </div>
   </section>

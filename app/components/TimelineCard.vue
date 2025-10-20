@@ -4,6 +4,7 @@ import type { Timeline } from "~/types/timeline";
 
 const props = defineProps<{
   timelineData: Timeline;
+  position: string;
 }>();
 
 const cover = computed(() => props.timelineData.cover);
@@ -11,6 +12,7 @@ const edition = computed(() => props.timelineData.edition);
 const date = computed(() => props.timelineData.date);
 const amount_raised = computed(() => props.timelineData.amount_raised);
 const charities = computed(() => props.timelineData.charities);
+// const position = "right";
 </script>
 
 <template>
@@ -48,8 +50,11 @@ const charities = computed(() => props.timelineData.charities);
       </div>
       <CTAGhost>Voir le bilan</CTAGhost>
     </div>
-    <div class="handle">
-      <div class="bulle"></div>
+    <div class="handle-r" v-if="position == 'right'">
+      <div class="bulle-r"></div>
+    </div>
+    <div class="handle-l" v-else-if="position == 'left'">
+      <div class="bulle-l"></div>
     </div>
   </div>
 </template>
@@ -75,7 +80,7 @@ const charities = computed(() => props.timelineData.charities);
   background: linear-gradient(180deg, #000 23.75%, rgba(0, 0, 0, 0) 100%);
 }
 
-.handle {
+.handle-r {
   width: 78px;
   height: 1px;
   background: #fff;
@@ -84,9 +89,29 @@ const charities = computed(() => props.timelineData.charities);
   right: -78px;
   transform: translateY(-50%);
 
-  .bulle {
+  .bulle-r {
     position: absolute;
     right: -8px;
+    background: #fff;
+    border-radius: 100%;
+    width: 1rem;
+    height: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+.handle-l {
+  width: 78px;
+  height: 1px;
+  background: #fff;
+  position: absolute;
+  top: 50%;
+  left: -78px;
+  transform: translateY(-50%);
+
+  .bulle-l {
+    position: absolute;
+    left: -8px;
     background: #fff;
     border-radius: 100%;
     width: 1rem;

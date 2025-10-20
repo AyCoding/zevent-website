@@ -14,7 +14,7 @@ defineProps<{
     class="streamer-cards bg-[#080808] h-[400px] min-w-[280px] max-w-[400px] relative rounded-2xl overflow-hidden border border-white/10"
   >
     <img
-      :src="data.photo"
+      :src="`/streamers-images${data.photo}`"
       alt=""
       class="photo w-full h-full object-cover"
       v-if="data.photo"
@@ -22,7 +22,7 @@ defineProps<{
     <div class="p-4 absolute bottom-0 flex gap-2 z-10">
       <div class="avatar rounded-full">
         <img
-          :src="data.avatar"
+          :src="`/streamers-images${data.avatar}`"
           alt=""
           class="rounded-full"
           width="56"
@@ -51,7 +51,7 @@ defineProps<{
       class="w-full flex justify-center pt-[70px] relative"
     >
       <img
-        :src="data.avatar"
+        :src="`/streamers-images${data.avatar}`"
         alt=""
         class="avatar-large rounded-full z-10"
         width="160"
@@ -60,7 +60,7 @@ defineProps<{
     </div>
     <template v-if="!data.photo">
       <img
-        :src="data.avatar"
+        :src="`/streamers-images${data.avatar}`"
         alt=""
         class="blur-avatar rounded-full absolute top-[50%] translate-y-[-50%] z-0 blur-[32px] scale-125 opacity-30"
         width="420"

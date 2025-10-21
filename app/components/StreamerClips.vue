@@ -8,7 +8,7 @@ defineProps<{
 <template>
   <NuxtLink :to="data.url" target="_blank" rel="noreferrer">
     <div
-      class="streamer-clips min-w-[320px] max-w-[480px] hover:bg-[#16161B] overflow-hidden rounded-lg"
+      class="streamer-clips w-[400px] min-w-[320px] max-w-[480px] hover:bg-[#16161B] overflow-hidden rounded-lg"
     >
       <img :src="data.thumbnail_url" alt="" class="thumbnails" />
       <div class="flex gap-4 p-4">

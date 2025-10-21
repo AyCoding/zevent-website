@@ -11,10 +11,14 @@ const buttonLive = () => {
   onLive.value = !onLive.value;
 };
 
-const { data: streamersData } = useAsyncData("zevent", () =>
-  $fetch("https://zevent.fr/api/"),
+const streamer = ref<Streamer[]>([]);
+const { data: streamersData } = useAsyncData<{ live: Streamer[] }>(
+  "zevent",
+  () =>
+    $fetch("https://zevent.fr/api/", {
+      referrerPolicy: "strict-origin-when-cross-origin",
+    }),
 );
-
 const filterMode = ref<"all" | "LAN" | "Online">("all");
 
 const showOnline = (event?: boolean) => {
@@ -23,26 +27,28 @@ const showOnline = (event?: boolean) => {
   else filterMode.value = "all";
 };
 
-const filteredStreamers = computed(() => {
-  // Vérifie que les données existent et sont bien structurées
-  if (!streamersData.value || !streamersData.value.live) return [];
+const filteredStreamers = computed<Streamer[]>(() => {
+  // Populate the local ref from the fetched data if available
+  streamer.value = streamersData.value?.live ?? [];
 
-  let list = streamersData.value.live;
+  if (!streamer.value || streamer.value.length === 0) return [] as Streamer[];
+
+  let list = streamer.value;
 
   // Filtre par mode (LAN / Online / all)
   if (filterMode.value === "Online") {
-    list = list.filter((s) => s.location === "Online");
+    list = list.filter((s: Streamer) => s.location === "Online");
   } else if (filterMode.value === "LAN") {
-    list = list.filter((s) => s.location === "LAN");
+    list = list.filter((s: Streamer) => s.location === "LAN");
   }
 
   // Filtre par live si le bouton est activé
   if (onLive.value) {
-    list = list.filter((s) => s.live === true);
+    list = list.filter((s: Streamer) => s.live === true);
   }
 
   // Trie par pseudo Twitch
-  return list.sort((a, b) =>
+  return list.sort((a: Streamer, b: Streamer) =>
     a.twitch.localeCompare(b.twitch, "fr", { sensitivity: "base" }),
   );
 });

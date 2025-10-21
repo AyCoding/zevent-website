@@ -119,10 +119,12 @@ const filteredStreamers = computed<Streamer[]>(() => {
         </button>
       </div>
     </div>
-    <div
-      class="mx-auto px-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6 mt-8 pb-40"
-    >
-      <StreamerCards v-for="streamer in filteredStreamers" :data="streamer" />
+    <div class="mx-auto px-4 gap-6 mt-8 pb-40 flex flex-wrap justify-center">
+      <StreamerCards
+        v-for="streamer in filteredStreamers"
+        :key="streamer.twitch"
+        :data="streamer"
+      />
     </div>
   </div>
 </template>

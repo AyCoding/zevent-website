@@ -1,8 +1,20 @@
 <script setup lang="ts">
+import type { Clips } from "~/types/clips";
+
 useHead({
   title: "ZEVENT 2025",
 });
-const { data: clipsData } = useAsyncData("clips", () => $fetch("/api/clips"));
+
+interface ClipsResponse {
+  items: Clips[];
+}
+const data = ref<Clips[]>([]);
+const { data: clipsData } = await useAsyncData<ClipsResponse>("clips", () =>
+  $fetch<ClipsResponse>("/api/clips"),
+);
+watchEffect(() => {
+  data.value = clipsData.value?.items ?? [];
+});
 </script>
 
 <template>
@@ -67,7 +79,7 @@ const { data: clipsData } = useAsyncData("clips", () => $fetch("/api/clips"));
       </div>
     </div>
     <div class="mx-auto px-4 gap-10 mt-8 pb-40 flex flex-wrap justify-center">
-      <StreamerClips v-for="clip in clipsData.items" :data="clip" />
+      <StreamerClips v-for="clip in data" :data="clip" />
     </div>
   </div>
 </template>

@@ -29,6 +29,16 @@ importers:
       vue-router:
         specifier: ^4.6.3
         version: 4.6.3(vue@3.5.22)
+    devDependencies:
+      '@oxc-minify/binding-linux-x64-gnu':
+        specifier: ^0.95.0
+        version: 0.95.0
+      '@oxc-parser/binding-linux-x64-gnu':
+        specifier: ^0.95.0
+        version: 0.95.0
+      '@oxc-transform/binding-linux-x64-gnu':
+        specifier: ^0.95.0
+        version: 0.95.0
 
 packages:
 
@@ -490,6 +500,12 @@ packages:
     cpu: [x64]
     os: [linux]
 
+  '@oxc-minify/binding-linux-x64-gnu@0.95.0':
+    resolution: {integrity: sha512-3K2lxzk679ml1vXJtO8Nt3xMD2trnDQWBb4Q676Un5g3dbaYf1WgTmEI13ZnCrwE5uBI02DFtFQplkLFqb9dGA==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [x64]
+    os: [linux]
+
   '@oxc-minify/binding-linux-x64-musl@0.94.0':
     resolution: {integrity: sha512-W4hFq/e21o2cOKx9xltJuVo/xgXnn4SsUioo/86pk5vCmUXg++J0PMML/oOZTSbevlklg/Vxo8slRUSU4/0PzA==}
     engines: {node: ^20.19.0 || >=22.12.0}
@@ -575,6 +591,12 @@ packages:
 
   '@oxc-parser/binding-linux-x64-gnu@0.94.0':
     resolution: {integrity: sha512-TbtpRdViF3aPCQBKuEo+TcucwW3KFa6bMHVakgaJu12RZrFpO4h1IWppBbuuBQ9X7SfvpgC1YgCDGve9q6fpEA==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [x64]
+    os: [linux]
+
+  '@oxc-parser/binding-linux-x64-gnu@0.95.0':
+    resolution: {integrity: sha512-8huzHlK/N98wrnYKxIcYsK8ZGBWomQchu/Mzi6m+CtbhjWOv9DmK0jQ2fUWImtluQVpTwS0uZT06d3g7XIkJrA==}
     engines: {node: ^20.19.0 || >=22.12.0}
     cpu: [x64]
     os: [linux]
@@ -667,6 +689,12 @@ packages:
 
   '@oxc-transform/binding-linux-x64-gnu@0.94.0':
     resolution: {integrity: sha512-kK5dt8wfxUD3MGXnLHWxv57oYinIwoRFcjw2oJD5DCoGTeXCmrFk4D0eGPAlZKOm7uvWMs9yNI8rg1KY5nEs1w==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [x64]
+    os: [linux]
+
+  '@oxc-transform/binding-linux-x64-gnu@0.95.0':
+    resolution: {integrity: sha512-D5ULJ2uWipsTgfvHIvqmnGkCtB3Fyt2ZN7APRjVO+wLr+HtmnaWddKsLdrRWX/m/6nQ2xQdoQekdJrokYK9LtQ==}
     engines: {node: ^20.19.0 || >=22.12.0}
     cpu: [x64]
     os: [linux]
@@ -3926,6 +3954,8 @@ snapshots:
   '@oxc-minify/binding-linux-x64-gnu@0.94.0':
     optional: true
 
+  '@oxc-minify/binding-linux-x64-gnu@0.95.0': {}
+
   '@oxc-minify/binding-linux-x64-musl@0.94.0':
     optional: true
 
@@ -3972,6 +4002,8 @@ snapshots:
 
   '@oxc-parser/binding-linux-x64-gnu@0.94.0':
     optional: true
+
+  '@oxc-parser/binding-linux-x64-gnu@0.95.0': {}
 
   '@oxc-parser/binding-linux-x64-musl@0.94.0':
     optional: true
@@ -4021,6 +4053,8 @@ snapshots:
 
   '@oxc-transform/binding-linux-x64-gnu@0.94.0':
     optional: true
+
+  '@oxc-transform/binding-linux-x64-gnu@0.95.0': {}
 
   '@oxc-transform/binding-linux-x64-musl@0.94.0':
     optional: true

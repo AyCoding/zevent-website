@@ -15,10 +15,19 @@ const streamer = ref<Streamer[]>([]);
 const { data: streamersData } = useAsyncData<{ live: Streamer[] }>(
   "zevent",
   () =>
-    $fetch("https://zevent.fr/api/", {
+    /*$fetch("https://zevent.fr/api/", {
       referrerPolicy: "strict-origin-when-cross-origin",
-    }),
+    }),*/ $fetch("/api/zevent"),
 );
+
+watch(
+  streamersData,
+  (newData) => {
+    streamer.value = newData?.live ?? [];
+  },
+  { immediate: true },
+);
+
 const filterMode = ref<"all" | "LAN" | "Online">("all");
 
 const showOnline = (event?: boolean) => {
@@ -28,26 +37,23 @@ const showOnline = (event?: boolean) => {
 };
 
 const filteredStreamers = computed<Streamer[]>(() => {
-  // Populate the local ref from the fetched data if available
-  streamer.value = streamersData.value?.live ?? [];
-
   if (!streamer.value || streamer.value.length === 0) return [] as Streamer[];
 
   let list = streamer.value;
 
-  // Filtre par mode (LAN / Online / all)
+  // Filter by mode (LAN / Online / all)
   if (filterMode.value === "Online") {
     list = list.filter((s: Streamer) => s.location === "Online");
   } else if (filterMode.value === "LAN") {
     list = list.filter((s: Streamer) => s.location === "LAN");
   }
 
-  // Filtre par live si le bouton est activé
+  // Filter by live if the button is active
   if (onLive.value) {
     list = list.filter((s: Streamer) => s.live === true);
   }
 
-  // Trie par pseudo Twitch
+  // Sort by Twitch username
   return list.sort((a: Streamer, b: Streamer) =>
     a.twitch.localeCompare(b.twitch, "fr", { sensitivity: "base" }),
   );

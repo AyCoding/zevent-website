@@ -1,63 +1,63 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
-import type { Streamer } from '~/types/streamer'
+import { ref, computed } from "vue";
+import type { Streamer } from "~/types/streamer";
 
 useHead({
-  title: 'ZEVENT 2025',
-})
+  title: "ZEVENT 2025",
+});
 
-const onLive = ref(false)
+const onLive = ref(false);
 const buttonLive = () => {
-  onLive.value = !onLive.value
-}
+  onLive.value = !onLive.value;
+};
 
-const streamer = ref<Streamer[]>([])
+const streamer = ref<Streamer[]>([]);
 const { data: streamersData } = useAsyncData<{ live: Streamer[] }>(
-  'zevent',
+  "zevent",
   () =>
     /*$fetch("https://zevent.fr/api/", {
       referrerPolicy: "strict-origin-when-cross-origin",
-    }),*/ $fetch('/api/zevent'),
-)
+    }),*/ $fetch("/api/zevent"),
+);
 
 watch(
   streamersData,
   (newData) => {
-    streamer.value = newData?.live ?? []
+    streamer.value = newData?.live ?? [];
   },
   { immediate: true },
-)
+);
 
-const filterMode = ref<'all' | 'LAN' | 'Online'>('all')
+const filterMode = ref<"all" | "LAN" | "Online">("all");
 
 const showOnline = (event?: boolean) => {
-  if (event === true) filterMode.value = 'Online'
-  else if (event === false) filterMode.value = 'LAN'
-  else filterMode.value = 'all'
-}
+  if (event === true) filterMode.value = "Online";
+  else if (event === false) filterMode.value = "LAN";
+  else filterMode.value = "all";
+};
 
 const filteredStreamers = computed<Streamer[]>(() => {
-  if (!streamer.value || streamer.value.length === 0) return [] as Streamer[]
+  if (!streamer.value || streamer.value.length === 0) return [] as Streamer[];
 
-  let list = streamer.value
+  let list = streamer.value;
 
   // Filter by mode (LAN / Online / all)
-  if (filterMode.value === 'Online') {
-    list = list.filter((s: Streamer) => s.location === 'Online')
-  } else if (filterMode.value === 'LAN') {
-    list = list.filter((s: Streamer) => s.location === 'LAN')
+  if (filterMode.value === "Online") {
+    list = list.filter((s: Streamer) => s.location === "Online");
+  } else if (filterMode.value === "LAN") {
+    list = list.filter((s: Streamer) => s.location === "LAN");
   }
 
   // Filter by live if the button is active
   if (onLive.value) {
-    list = list.filter((s: Streamer) => s.live === true)
+    list = list.filter((s: Streamer) => s.live === true);
   }
 
   // Sort by Twitch username
   return list.sort((a: Streamer, b: Streamer) =>
-    a.twitch.localeCompare(b.twitch, 'fr', { sensitivity: 'base' }),
-  )
-})
+    a.twitch.localeCompare(b.twitch, "fr", { sensitivity: "base" }),
+  );
+});
 </script>
 
 <template>
@@ -119,7 +119,9 @@ const filteredStreamers = computed<Streamer[]>(() => {
         </button>
       </div>
     </div>
-    <div class="container mx-auto px-20 grid grid-cols-4 gap-6 mt-8 pb-40">
+    <div
+      class="mx-auto px-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6 mt-8 pb-40"
+    >
       <StreamerCards v-for="streamer in filteredStreamers" :data="streamer" />
     </div>
   </div>

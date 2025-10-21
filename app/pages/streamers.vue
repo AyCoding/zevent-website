@@ -11,114 +11,39 @@ const buttonLive = () => {
   onLive.value = !onLive.value;
 };
 
-const allStreamers = ref<Streamer[]>([
-  {
-    pseudo: "Zerator",
-    avatar: "/zerator-avatar.png",
-    photo: "/zerator.png",
-    twitch: "https://www.twitch.tv/ZeratoR",
-    online: false,
-    cagnotte: 1154211.58,
-    live: true,
-  },
-  {
-    pseudo: "Ultia",
-    avatar: "/ultia-avatar.png",
-    photo: "/ultia.png",
-    twitch: "https://www.twitch.tv/Ultia",
-    online: false,
-    cagnotte: 125685.25,
-  },
-  {
-    pseudo: "BastiUi",
-    avatar: "/bastiui-avatar.png",
-    photo: "",
-    twitch: "https://www.twitch.tv/BastiUi",
-    online: true,
-    cagnotte: 7713.45,
-    live: true,
-  },
-  {
-    pseudo: "AntoineDaniel",
-    avatar: "/antoinedaniel-avatar.png",
-    photo: "",
-    twitch: "https://www.twitch.tv/AntoineDaniel",
-    online: false,
-    cagnotte: 1218838.44,
-  },
-  {
-    pseudo: "Etoiles",
-    avatar: "/etoiles-avatar.png",
-    photo: "",
-    twitch: "https://www.twitch.tv/etoiles",
-    online: false,
-    cagnotte: 201236.1,
-  },
-  {
-    pseudo: "BagheraJones",
-    avatar: "/bagz-avatar.png",
-    photo: "",
-    twitch: "https://www.twitch.tv/BagheraJones",
-    online: false,
-    cagnotte: 135326.78,
-  },
-  {
-    pseudo: "samueletienne",
-    avatar: "/samueletienne-avatar.png",
-    photo: "/samueletienne.png",
-    twitch: "https://www.twitch.tv/samueletienne",
-    online: false,
-    cagnotte: 403097.43,
-  },
-  {
-    pseudo: "Joyca",
-    avatar: "/joyca-avatar.png",
-    photo: "/joyca.png",
-    twitch: "https://www.twitch.tv/joyca",
-    online: false,
-    cagnotte: 305318.8,
-  },
-  {
-    pseudo: "Flonflon",
-    avatar: "/flonflon-avatar.png",
-    photo: "",
-    twitch: "https://twitch.tv/flonflon",
-    online: true,
-    cagnotte: 14667.51,
-  },
-  {
-    pseudo: "mistermv",
-    avatar: "/mistermv-avatar.png",
-    photo: "",
-    twitch: "https://twitch.tv/mistermv",
-    online: true,
-    cagnotte: 306123.27,
-  },
-]);
+const { data: streamersData } = useAsyncData("zevent", () =>
+  $fetch("https://zevent.fr/api/"),
+);
 
-const filterMode = ref<"all" | "onsite" | "remote">("all");
+const filterMode = ref<"all" | "LAN" | "Online">("all");
 
 const showOnline = (event?: boolean) => {
-  if (event === true) filterMode.value = "remote";
-  else if (event === false) filterMode.value = "onsite";
+  if (event === true) filterMode.value = "Online";
+  else if (event === false) filterMode.value = "LAN";
   else filterMode.value = "all";
 };
 
 const filteredStreamers = computed(() => {
-  let list = allStreamers.value.slice();
+  // Vérifie que les données existent et sont bien structurées
+  if (!streamersData.value || !streamersData.value.live) return [];
 
-  if (filterMode.value === "remote") {
-    list = list.filter((s) => s.online);
-  } else if (filterMode.value === "onsite") {
-    list = list.filter((s) => !s.online);
+  let list = streamersData.value.live;
+
+  // Filtre par mode (LAN / Online / all)
+  if (filterMode.value === "Online") {
+    list = list.filter((s) => s.location === "Online");
+  } else if (filterMode.value === "LAN") {
+    list = list.filter((s) => s.location === "LAN");
   }
 
+  // Filtre par live si le bouton est activé
   if (onLive.value) {
     list = list.filter((s) => s.live === true);
   }
 
+  // Trie par pseudo Twitch
   return list.sort((a, b) =>
-    a.pseudo.localeCompare(b.pseudo, "fr", { sensitivity: "base" }),
+    a.twitch.localeCompare(b.twitch, "fr", { sensitivity: "base" }),
   );
 });
 </script>
@@ -148,7 +73,7 @@ const filteredStreamers = computed(() => {
         <button
           :class="[
             'h-10 flex justify-center items-center p-4 rounded-4xl cursor-pointer',
-            filterMode === 'onsite'
+            filterMode === 'LAN'
               ? 'text-black opacity-100 bg-[#02E869]'
               : 'opacity-75 hover:opacity-100',
           ]"
@@ -159,7 +84,7 @@ const filteredStreamers = computed(() => {
         <button
           :class="[
             'h-10 flex justify-center items-center p-4 rounded-4xl cursor-pointer',
-            filterMode === 'remote'
+            filterMode === 'Online'
               ? 'text-black opacity-100 bg-[#02E869]'
               : 'opacity-75 hover:opacity-100',
           ]"
@@ -183,11 +108,7 @@ const filteredStreamers = computed(() => {
       </div>
     </div>
     <div class="container mx-auto px-20 grid grid-cols-4 gap-6 mt-8 pb-40">
-      <StreamerCards
-        v-for="streamer in filteredStreamers"
-        :key="streamer.pseudo"
-        :data="streamer"
-      />
+      <StreamerCards v-for="streamer in filteredStreamers" :data="streamer" />
     </div>
   </div>
 </template>

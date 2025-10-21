@@ -8,7 +8,7 @@ defineProps<{
 
 <template>
   <a
-    :href="data.twitch"
+    :href="`https://twitch.tv/${data.twitch}`"
     target="_blank"
     rel="noopener noreferrer"
     class="streamer-cards bg-[#080808] h-[400px] min-w-[280px] max-w-[400px] relative rounded-2xl overflow-hidden border border-white/10"
@@ -33,7 +33,7 @@ defineProps<{
     <div class="p-4 absolute bottom-0 flex gap-2 z-10">
       <div class="avatar rounded-full">
         <img
-          :src="`/streamers-images${data.avatar}`"
+          :src="data.profileUrl"
           alt=""
           class="rounded-full"
           width="56"
@@ -44,13 +44,18 @@ defineProps<{
       <div class="flex flex-col gap-2">
         <div class="flex gap-1">
           <h4 class="text-[22px] font-semibold leading-[22px]">
-            {{ data.pseudo }}
+            {{ data.display }}
           </h4>
-          <img src="/online-yes.svg" alt="" v-if="data.online" />
+          <img src="/online-yes.svg" alt="" v-if="data.location == 'Online'" />
           <img src="/online-no.svg" alt="" v-else />
         </div>
         <p class="cagnotte text-xs leading-4 w-fit">
-          {{ Intl.NumberFormat("fr-FR").format(Math.round(data.cagnotte)) }} €
+          {{
+            Intl.NumberFormat("fr-FR").format(
+              Math.round(data.donationAmount["number"]),
+            )
+          }}
+          €
         </p>
       </div>
     </div>
@@ -62,7 +67,7 @@ defineProps<{
       class="w-full flex justify-center pt-[70px] relative"
     >
       <img
-        :src="`/streamers-images${data.avatar}`"
+        :src="data.profileUrl"
         alt=""
         class="avatar-large rounded-full z-10"
         width="160"
@@ -71,7 +76,7 @@ defineProps<{
     </div>
     <template v-if="!data.photo">
       <img
-        :src="`/streamers-images${data.avatar}`"
+        :src="data.profileUrl"
         alt=""
         class="blur-avatar rounded-full absolute top-[50%] translate-y-[-50%] z-0 blur-[32px] scale-125 opacity-30"
         width="420"

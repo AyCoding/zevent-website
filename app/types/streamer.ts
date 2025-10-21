@@ -6,4 +6,10 @@ export interface Streamer {
   online: boolean;
   cagnotte: number;
   live?: boolean;
+  display: string;
+  profileUrl: string;
+  location: string;
+  donationAmount: {
+    number: number;
+  };
 }

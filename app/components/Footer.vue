@@ -33,6 +33,43 @@ function scrollToTop() {
         Haut de la page ↑
       </CTAGhost>
     </div>
+    <div class="flex flex-col items-center pb-4 gap-1 text-sm">
+      <div>
+        <p>
+          Fait par
+          <a
+            href="https://aymericdelange.fr"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-[#02E869] font-bold"
+          >
+            Aymeric DE LANGE
+          </a>
+          à l'aide du redesign de
+          <a
+            href="https://www.figma.com/community/file/1559521225721548044"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-[#02E869] font-bold"
+          >
+            BastiUi
+          </a>
+        </p>
+      </div>
+      <div>
+        <p>
+          Ce site n'est pas officiel et ne dépend pas du staff du
+          <a
+            href="https://zevent.fr/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-[#02E869] font-bold"
+          >
+            ZEvent
+          </a>
+        </p>
+      </div>
+    </div>
   </footer>
 </template>
 

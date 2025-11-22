@@ -225,8 +225,10 @@ const timelineData: Timeline[] = [
       </p>
     </div>
   </section>
-  <section class="py-25">
-    <h1 class="font-medium text-[88px] leading-20 tracking-tight text-center">
+  <section class="py-25 px-4">
+    <h1
+      class="font-medium text-6xl lg:text-[88px] leading-20 tracking-tight text-center"
+    >
       Historique
     </h1>
 

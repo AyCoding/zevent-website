@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import type { Timeline } from "~/types/timeline";
+import type { Timeline } from "../types/timeline"
 
 useHead({
   title: "ZEVENT 2025",
-});
+})
 
 function scrollToDiscover() {
   window.document
     .getElementById("decouvrir")
-    ?.scrollIntoView({ behavior: "smooth" });
+    ?.scrollIntoView({ behavior: "smooth" })
 }
 const timelineData: Timeline[] = [
   {
@@ -172,7 +172,7 @@ const timelineData: Timeline[] = [
       },
     ],
   },
-];
+]
 </script>
 
 <template>
@@ -181,13 +181,13 @@ const timelineData: Timeline[] = [
     <div class="hero-content px-4">
       <h1>L'évènement caritatif qui récolte des fonds pour la solidarité</h1>
       <div class="pt-20 flex px-6 gap-4">
-        <div class="flex flex-col text-start text-pretty gap-4 m-2 w-[160px]">
+        <div class="flex flex-col text-start text-pretty gap-4 m-2 w-40">
           <h2 class="text-[40px] font-semibold text-[#02E869] tracking-tight">
             4 Sept.
           </h2>
           <p>Concert au Zenith de Montpellier</p>
         </div>
-        <div class="flex flex-col text-start text-pretty gap-4 m-2 w-[160px]">
+        <div class="flex flex-col text-start text-pretty gap-4 m-2 w-40">
           <h2 class="text-[40px] font-semibold text-[#02E869] tracking-tight">
             5-7 Sept.
           </h2>
@@ -231,22 +231,27 @@ const timelineData: Timeline[] = [
     </h1>
 
     <div class="relative">
-      <div class="w-[80px] h-[1px] bg-white mx-auto mt-8 line"></div>
-      <div class="vertical-line"></div>
-      <div class="flex flex-col items-center gap-40">
-        <div
-          v-for="(data, index) in timelineData"
-          :key="index + '-' + data.edition"
-          :class="
-            index % 2 === 0
-              ? 'w-full pr-[555px] flex justify-center'
-              : 'w-full pl-[555px] flex justify-center'
-          "
-        >
-          <TimelineCard
-            :timelineData="data"
-            :position="index % 2 === 0 ? 'right' : 'left'"
-          />
+      <div class="w-20 h-px bg-white mx-auto mt-8 line hidden lg:block"></div>
+      <div class="vertical-line hidden lg:block"></div>
+      <div class="flex flex-col items-center gap-40 mt-8 lg:mt-0">
+        <div class="max-w-[1200px] w-full items-center">
+          <div
+            v-for="(data, index) in timelineData"
+            class="flex justify-center lg:odd:flex-row-reverse mb-20 relative"
+          >
+            <div
+              class="w-4 h-4 bg-white rounded-full absolute left-1/2 translate-x-[-50%] top-1/2 translate-y-[-50%] hidden lg:block"
+            ></div>
+            <div class="lg:flex lg:justify-center lg:w-1/2 hidden"></div>
+            <div
+              class="flex justify-center w-full lg:w-1/2 overflow-x-hidden p-px"
+            >
+              <TimelineCard
+                :timelineData="data"
+                :position="index % 2 === 0 ? 'right' : 'left'"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>

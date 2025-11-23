@@ -22,6 +22,7 @@
   "devDependencies": {
     "@oxc-minify/binding-linux-x64-gnu": "^0.95.0",
     "@oxc-parser/binding-linux-x64-gnu": "^0.95.0",
-    "@oxc-transform/binding-linux-x64-gnu": "^0.95.0"
+    "@oxc-transform/binding-linux-x64-gnu": "^0.95.0",
+    "@types/node": "^24.10.1"
   }
 }

@@ -1,20 +1,20 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
-import AssociationsFdf from "~/components/Associations/Fdf.vue";
-import AssociationsAidants from "~/components/Associations/Aidants.vue";
-import AssociationsHelebor from "~/components/Associations/Helebor.vue";
-import AssociationsLigueCancer from "~/components/Associations/LigueCancer.vue";
-import AssociationsNightline from "~/components/Associations/Nightline.vue";
+import { ref, computed } from "vue"
+import AssociationsFdf from "~/components/Associations/Fdf.vue"
+import AssociationsAidants from "~/components/Associations/Aidants.vue"
+import AssociationsHelebor from "~/components/Associations/Helebor.vue"
+import AssociationsLigueCancer from "~/components/Associations/LigueCancer.vue"
+import AssociationsNightline from "~/components/Associations/Nightline.vue"
 
 useHead({
   title: "ZEVENT 2025",
-});
+})
 
 type Assoc = {
-  id: string;
-  name: string;
-  component: any;
-};
+  id: string
+  name: string
+  component: any
+}
 
 const associations: Assoc[] = [
   { id: "fdf", name: "Fondation de france", component: AssociationsFdf },
@@ -30,29 +30,25 @@ const associations: Assoc[] = [
     component: AssociationsLigueCancer,
   },
   { id: "nightline", name: "Nightline", component: AssociationsNightline },
-];
+]
 
-const activeId = ref<string>("fdf");
+const activeId = ref<string>("fdf")
 
 function selectAssociation(id: string) {
-  activeId.value = id;
+  activeId.value = id
 }
 
 const currentComponent = computed(() => {
-  const found = associations.find((a) => a.id === activeId.value);
-  return found?.component ?? AssociationsFdf;
-});
+  const found = associations.find((a) => a.id === activeId.value)
+  return found?.component ?? AssociationsFdf
+})
 </script>
 
 <template>
-  <h1
-    class="fixed -z-10 text-[320px] font-normal leading-[400px] tracking-[-19.2px] opacity-50 mix-blend-overlay top-[56px] left-1/2 translate-x-[-50%]"
-  >
-    ./Associations
-  </h1>
+  <HeroTitle>./Associations</HeroTitle>
   <div class="pt-[364px]">
     <div
-      class="sticky top-[100px] z-[2000] flex justify-center mx-auto p-1 rounded-[48px] bg-[#292931] w-fit gap-[1px] border border-white/10 shadow-lg"
+      class="sticky top-[100px] z-2000 flex justify-center mx-auto p-1 rounded-[48px] bg-[#292931] w-fit gap-px border border-white/10 shadow-lg"
     >
       <button
         v-for="association in associations"

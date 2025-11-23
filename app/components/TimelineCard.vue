@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import { computed } from "vue";
-import type { Timeline } from "~/types/timeline";
+import { computed } from "vue"
+import type { Timeline } from "~/types/timeline"
 
 const props = defineProps<{
-  timelineData: Timeline;
-  position: string;
-}>();
+  timelineData: Timeline
+  position: string
+}>()
 
-const cover = computed(() => props.timelineData.cover);
-const edition = computed(() => props.timelineData.edition);
-const date = computed(() => props.timelineData.date);
-const amount_raised = computed(() => props.timelineData.amount_raised);
-const charities = computed(() => props.timelineData.charities);
+const cover = computed(() => props.timelineData.cover)
+const edition = computed(() => props.timelineData.edition)
+const date = computed(() => props.timelineData.date)
+const amount_raised = computed(() => props.timelineData.amount_raised)
+const charities = computed(() => props.timelineData.charities)
 // const position = "right";
 </script>
 
@@ -50,11 +50,11 @@ const charities = computed(() => props.timelineData.charities);
       </div>
       <CTAGhost>Voir le bilan</CTAGhost>
     </div>
-    <div class="handle-r" v-if="position == 'right'">
-      <div class="bulle-r"></div>
+    <div class="handle-r hidden lg:block" v-if="position == 'right'">
+      <!-- <div class="bulle-r hidden lg:block"></div> -->
     </div>
-    <div class="handle-l" v-else-if="position == 'left'">
-      <div class="bulle-l"></div>
+    <div class="handle-l hidden lg:block" v-else-if="position == 'left'">
+      <!-- <div class="bulle-l hidden lg:block"></div> -->
     </div>
   </div>
 </template>
@@ -81,12 +81,12 @@ const charities = computed(() => props.timelineData.charities);
 }
 
 .handle-r {
-  width: 78px;
+  width: 200px;
   height: 1px;
   background: #fff;
   position: absolute;
   top: 50%;
-  right: -78px;
+  right: -200px;
   transform: translateY(-50%);
 
   .bulle-r {
@@ -101,12 +101,12 @@ const charities = computed(() => props.timelineData.charities);
   }
 }
 .handle-l {
-  width: 78px;
+  width: 200px;
   height: 1px;
   background: #fff;
   position: absolute;
   top: 50%;
-  left: -78px;
+  left: -200px;
   transform: translateY(-50%);
 
   .bulle-l {

@@ -1,14 +1,45 @@
 <script setup lang="ts">
-import type { Streamer } from "~/types/streamer";
+import type { Streamer } from "~/types/streamer"
 
-defineProps<{
-  data: Streamer;
-}>();
+const props = defineProps<{
+  streamer: Streamer
+  photo?: string
+}>()
+
+const { data: live_status } = useFetch(
+  () => `/api/live_status/${props.streamer.twitch}`,
+)
+
+const streamer_photo = [
+  "zerator",
+  "ultia",
+  "samueletienne",
+  "joyca",
+  "thegreatreview",
+  "ponce",
+  "clemovitch",
+  "doigby",
+  "etoiles",
+  "angledroit",
+  "enjoyphoenix",
+  "domingo",
+  "sylvainlyve",
+  "littlebigwhale",
+  "mastu",
+  "theguill84",
+  "jltomy",
+  "flamby",
+]
+
+const streamer_filter = computed(() => {
+  const twitch = props.streamer.twitch
+  return streamer_photo.includes(twitch) ? twitch : null
+})
 </script>
 
 <template>
   <a
-    :href="`https://twitch.tv/${data.twitch}`"
+    :href="`https://twitch.tv/${streamer.twitch}`"
     target="_blank"
     rel="noopener noreferrer"
     class="streamer-cards bg-[#080808] h-[400px] min-w-[280px] max-w-[400px] relative rounded-2xl overflow-hidden border border-white/10"
@@ -16,43 +47,43 @@ defineProps<{
     <div
       class="flex flex-1 text-xs font-normal leading-4 absolute right-0 p-1 m-2 z-10"
     >
-      <span v-if="!data.live" class="opacity-75">Offline</span>
-      <div v-else class="flex items-center gap-[1px]">
+      <span v-if="!live_status?.length" class="opacity-75">Offline</span>
+      <div v-else-if="live_status?.length" class="flex items-center gap-px">
         Live
-        <div class="flex justify-center items-center w-[16px] h-[16px]">
+        <div class="flex justify-center items-center w-4 h-4">
           <span class="pulse-dot" aria-hidden="true"></span>
         </div>
       </div>
     </div>
     <img
-      :src="`/streamers-images${data.photo}`"
+      :src="`/streamers-images/${streamer_filter}.png`"
       alt=""
       class="photo w-full h-full object-cover"
-      v-if="data.photo"
+      v-if="streamer_filter"
     />
     <div class="p-4 absolute bottom-0 flex gap-2 z-10">
       <div class="avatar rounded-full">
         <img
-          :src="data.profileUrl"
+          :src="streamer.profileUrl"
           alt=""
           class="rounded-full"
           width="56"
           height="56"
-          v-if="data.photo"
+          v-if="streamer_filter"
         />
       </div>
       <div class="flex flex-col gap-2">
-        <div class="flex gap-1">
+        <div class="flex items-center gap-1">
           <h4 class="text-[22px] font-semibold leading-[22px]">
-            {{ data.display }}
+            {{ streamer.display }}
           </h4>
-          <img src="/online-yes.svg" alt="" v-if="data.location == 'Online'" />
-          <img src="/online-no.svg" alt="" v-else />
+          <IconOnline v-if="streamer.location === 'Online'"></IconOnline>
+          <IconOffline v-else></IconOffline>
         </div>
         <p class="cagnotte text-xs leading-4 w-fit">
           {{
             Intl.NumberFormat("fr-FR").format(
-              Math.round(data.donationAmount["number"]),
+              Math.round(streamer.donationAmount["number"]),
             )
           }}
           €
@@ -63,20 +94,20 @@ defineProps<{
       class="streamer-bottom absolute bottom-0 w-full h-[200px] bg-green-700/20"
     ></div>
     <div
-      v-if="!data.photo"
+      v-if="!streamer_filter"
       class="w-full flex justify-center pt-[70px] relative"
     >
       <img
-        :src="data.profileUrl"
+        :src="streamer.profileUrl"
         alt=""
         class="avatar-large rounded-full z-10"
         width="160"
         height="160"
       />
     </div>
-    <template v-if="!data.photo">
+    <template v-if="!streamer_filter">
       <img
-        :src="data.profileUrl"
+        :src="streamer.profileUrl"
         alt=""
         class="blur-avatar rounded-full absolute top-[50%] translate-y-[-50%] z-0 blur-[32px] scale-125 opacity-30"
         width="420"

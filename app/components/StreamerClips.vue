@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { Clips } from "~/types/clips";
+import type { Clips } from '~/types/clips'
 defineProps<{
-  data: Clips;
-}>();
+  data: Clips
+}>()
 </script>
 
 <template>
@@ -29,15 +29,23 @@ defineProps<{
             <p
               class="pseudo font-semibold text-[13px] leading-5 tracking-tight"
             >
-              {{ data.broadcaster["display_name"] }}
+              {{ data.broadcaster['display_name'] }}
             </p>
             <div
               class="flex gap-2 text-[13px] leading-5 tracking-tight opacity-50"
             >
               <p>
-                {{ Intl.NumberFormat("fr-FR").format(data.view_count) }} vues
+                {{ Intl.NumberFormat('fr-FR').format(data.view_count) }} vues
               </p>
-              <p>{{ data.created_at }}</p>
+              <p>
+                {{
+                  new Intl.DateTimeFormat('fr-FR', {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: '2-digit',
+                  }).format(new Date(data.created_at))
+                }}
+              </p>
             </div>
           </div>
         </div>

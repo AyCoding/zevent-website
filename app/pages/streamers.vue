@@ -1,75 +1,69 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
-import type { Streamer } from "~/types/streamer";
+import { ref, computed } from "vue"
+import type { Streamer } from "~/types/streamer"
 
 useHead({
   title: "ZEVENT 2025",
-});
+})
 
-const onLive = ref(false);
+const onLive = ref(false)
 const buttonLive = () => {
-  onLive.value = !onLive.value;
-};
+  onLive.value = !onLive.value
+}
 
-const streamer = ref<Streamer[]>([]);
+const streamer = ref<Streamer[]>([])
 const { data: streamersData } = useAsyncData<{ live: Streamer[] }>(
   "zevent",
-  () =>
-    /*$fetch("https://zevent.fr/api/", {
-      referrerPolicy: "strict-origin-when-cross-origin",
-    }),*/ $fetch("/api/zevent"),
-);
+  () => $fetch("/api/zevent"),
+)
 
 watch(
   streamersData,
   (newData) => {
-    streamer.value = newData?.live ?? [];
+    streamer.value = newData?.live ?? []
   },
   { immediate: true },
-);
+)
 
-const filterMode = ref<"all" | "LAN" | "Online">("all");
+const filterMode = ref<"all" | "LAN" | "Online">("all")
 
 const showOnline = (event?: boolean) => {
-  if (event === true) filterMode.value = "Online";
-  else if (event === false) filterMode.value = "LAN";
-  else filterMode.value = "all";
-};
+  if (event === true) filterMode.value = "Online"
+  else if (event === false) filterMode.value = "LAN"
+  else filterMode.value = "all"
+}
 
 const filteredStreamers = computed<Streamer[]>(() => {
-  if (!streamer.value || streamer.value.length === 0) return [] as Streamer[];
+  if (!streamer.value || streamer.value.length === 0) return [] as Streamer[]
 
-  let list = streamer.value;
+  let list = streamer.value
 
   // Filter by mode (LAN / Online / all)
   if (filterMode.value === "Online") {
-    list = list.filter((s: Streamer) => s.location === "Online");
+    list = list.filter((s: Streamer) => s.location === "Online")
   } else if (filterMode.value === "LAN") {
-    list = list.filter((s: Streamer) => s.location === "LAN");
+    list = list.filter((s: Streamer) => s.location === "LAN")
   }
 
   // Filter by live if the button is active
   if (onLive.value) {
-    list = list.filter((s: Streamer) => s.live === true);
+    list = list.filter((s: Streamer) => s.live === true)
   }
 
   // Sort by Twitch username
   return list.sort((a: Streamer, b: Streamer) =>
     a.twitch.localeCompare(b.twitch, "fr", { sensitivity: "base" }),
-  );
-});
+  )
+})
 </script>
 
 <template>
-  <h1
-    class="fixed -z-10 text-[320px] font-normal leading-[400px] tracking-[-19.2px] opacity-50 mix-blend-overlay top-[56px] left-1/2 translate-x-[-50%]"
-  >
-    ./Streamers
-  </h1>
+  <HeroTitle>./Streamers</HeroTitle>
+
   <div class="pt-[364px]">
-    <div class="sticky top-[100px] z-[2000] flex gap-4 justify-center w-full">
+    <div class="sticky top-[100px] z-2000 flex gap-4 justify-center w-full">
       <div
-        class="flex justify-center p-1 rounded-[48px] bg-[#292931] w-fit gap-[1px] border border-white/10"
+        class="flex justify-center p-1 rounded-[48px] bg-[#292931] w-fit gap-px border border-white/10"
       >
         <button
           :class="[
@@ -106,7 +100,7 @@ const filteredStreamers = computed<Streamer[]>(() => {
         </button>
       </div>
       <div
-        class="flex justify-center p-1 rounded-[48px] bg-[#292931] w-fit gap-[1px] border border-white/10"
+        class="flex justify-center p-1 rounded-[48px] bg-[#292931] w-fit gap-px border border-white/10"
       >
         <button
           :class="[
@@ -118,12 +112,91 @@ const filteredStreamers = computed<Streamer[]>(() => {
           En live
         </button>
       </div>
+      <div
+        class="flex justify-center p-1 rounded-[48px] bg-[#292931] w-fit gap-px border border-white/10"
+      >
+        <button
+          :class="[
+            'h-10 flex gap-1.5 justify-center items-center p-4 rounded-4xl cursor-pointer opacity-75 hover:opacity-100',
+          ]"
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="invert"
+          >
+            <g class="oi-arrow-up">
+              <path
+                class="oi-line"
+                d="M12 5L12 19"
+                stroke="#000000"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                class="oi-incomplete-triangle"
+                d="M6 11L12 5L18 11"
+                stroke="#000000"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </g>
+          </svg>
+          Trier par
+        </button>
+      </div>
+
+      <div
+        class="flex justify-center p-1 rounded-[48px] bg-[#292931] w-fit gap-px border border-white/10"
+      >
+        <button
+          :class="[
+            'h-10 flex gap-1.5 justify-center items-center p-4 rounded-4xl opacity-75 hover:opacity-100',
+          ]"
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="invert"
+          >
+            <g class="oi-search">
+              <path
+                class="oi-ellipse"
+                d="M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
+                stroke="#000000"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                class="oi-line"
+                d="M21 21L15 15"
+                stroke="#000000"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </g>
+          </svg>
+          <input type="text" placeholder="Rechercher" class="outline-none" />
+        </button>
+      </div>
     </div>
     <div class="mx-auto px-4 gap-6 mt-8 pb-40 flex flex-wrap justify-center">
       <StreamerCards
         v-for="streamer in filteredStreamers"
         :key="streamer.twitch"
-        :data="streamer"
+        :streamer="streamer"
       />
     </div>
   </div>

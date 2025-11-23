@@ -1,32 +1,28 @@
 <script setup lang="ts">
-import type { Clips } from "~/types/clips";
+import type { Clips } from "~/types/clips"
 
 useHead({
   title: "ZEVENT 2025",
-});
+})
 
 interface ClipsResponse {
-  items: Clips[];
+  items: Clips[]
 }
-const data = ref<Clips[]>([]);
+const data = ref<Clips[]>([])
 const { data: clipsData } = await useAsyncData<ClipsResponse>("clips", () =>
   $fetch<ClipsResponse>("/api/clips"),
-);
+)
 watchEffect(() => {
-  data.value = clipsData.value?.items ?? [];
-});
+  data.value = clipsData.value?.items ?? []
+})
 </script>
 
 <template>
-  <h1
-    class="fixed -z-10 text-[320px] font-normal leading-[400px] tracking-[-19.2px] opacity-50 mix-blend-overlay top-[56px] left-1/2 translate-x-[-50%]"
-  >
-    ./Clips
-  </h1>
+  <HeroTitle>./Clips</HeroTitle>
   <div class="pt-[364px]">
-    <div class="sticky top-[100px] z-[2000] flex gap-4 justify-center w-full">
+    <div class="sticky top-[100px] z-2000 flex gap-4 justify-center w-full">
       <div
-        class="flex justify-center p-1 rounded-[48px] bg-[#292931] w-fit gap-[1px] border border-white/10"
+        class="flex justify-center p-1 rounded-[48px] bg-[#292931] w-fit gap-px border border-white/10"
       >
         <button
           :class="[
@@ -50,7 +46,7 @@ watchEffect(() => {
         </button>
       </div>
       <div
-        class="flex justify-center p-1 rounded-[48px] bg-[#292931] w-fit gap-[1px] border border-white/10"
+        class="flex justify-center p-1 rounded-[48px] bg-[#292931] w-fit gap-px border border-white/10"
       >
         <button
           :class="[
@@ -64,7 +60,7 @@ watchEffect(() => {
         </button>
       </div>
       <div
-        class="flex justify-center p-1 rounded-[48px] bg-[#292931] w-fit gap-[1px] border border-white/10"
+        class="flex justify-center p-1 rounded-[48px] bg-[#292931] w-fit gap-px border border-white/10"
       >
         <button
           :class="[

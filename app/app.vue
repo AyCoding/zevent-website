@@ -4,6 +4,7 @@
   <div>
     <div class="lcd"></div>
     <Header />
+    <MobileHeader class="lg:hidden" />
     <NuxtPage />
     <Footer />
   </div>
@@ -11,7 +12,7 @@
 
 <style scoped>
 .lcd {
-  background-image: url('/lcd.png');
+  background-image: url("/lcd.png");
   width: 100%;
   height: 1920px; /* */
   position: fixed;

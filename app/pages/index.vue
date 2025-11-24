@@ -178,28 +178,52 @@ const timelineData: Timeline[] = [
 <template>
   <div class="hero-video">
     <video src="/HEADER-ZEVENT.mp4" autoplay muted loop></video>
-    <div class="hero-content px-4">
-      <h1>L'évènement caritatif qui récolte des fonds pour la solidarité</h1>
-      <div class="pt-20 flex px-6 gap-4">
+    <div
+      class="hero-content px-4 flex flex-col justify-center lg:items-center lg:text-center"
+    >
+      <img src="/Logo-small.png" alt="" class="w-[140px] pb-4 lg:hidden" />
+      <h1 class="text-[40px] lg:text-[80px] tracking-[-1px] lg:tracking-[-4px]">
+        L'évènement caritatif qui récolte des fonds pour la solidarité
+      </h1>
+      <div class="pt-20 flex lg:px-6 gap-4">
         <div class="flex flex-col text-start text-pretty gap-4 m-2 w-40">
-          <h2 class="text-[40px] font-semibold text-[#02E869] tracking-tight">
+          <h2
+            class="text-[32px] lg:text-[40px] font-semibold text-[#02E869] tracking-tight"
+          >
             4 Sept.
           </h2>
           <p>Concert au Zenith de Montpellier</p>
         </div>
         <div class="flex flex-col text-start text-pretty gap-4 m-2 w-40">
-          <h2 class="text-[40px] font-semibold text-[#02E869] tracking-tight">
+          <h2
+            class="text-[32px] lg:text-[40px] font-semibold text-[#02E869] tracking-tight"
+          >
             5-7 Sept.
           </h2>
           <p>Collecte de fonds en stream</p>
         </div>
       </div>
-      <div class="mt-20">
-        <CTAMain @click="scrollToDiscover">Découvrir l’événement</CTAMain>
+      <div class="flex gap-2 mt-20">
+        <CTAMain @click="scrollToDiscover" class="hidden lg:block"
+          >Découvrir l’événement</CTAMain
+        >
+        <CTASpecial to="https://zevent.fr/don/" class="w-full lg:hidden">
+          Faire un don
+        </CTASpecial>
+        <CTAMain
+          to="https://boutique.zevent.fr/"
+          target="_blank"
+          class="w-full lg:hidden"
+        >
+          La boutique
+        </CTAMain>
       </div>
     </div>
   </div>
-  <section id="decouvrir" class="flex max-w-7xl mx-auto px-4 py-70 gap-20">
+  <section
+    id="decouvrir"
+    class="flex flex-col items-center lg:flex-row lg:items-start max-w-7xl mx-auto px-4 py-70 gap-20"
+  >
     <div class="flex flex-col gap-10 w-full max-w-[600px]">
       <h1 class="font-medium text-[88px] leading-20 tracking-tight">
         ./ Le <span class="text-Z">ZEvent</span> c’est quoi ?
@@ -258,7 +282,9 @@ const timelineData: Timeline[] = [
       </div>
     </div>
   </section>
-  <section class="flex max-w-7xl mx-auto px-4 py-70 mt-48 gap-20">
+  <section
+    class="flex flex-col items-center lg:flex-row lg:items-start max-w-7xl mx-auto px-4 py-70 mt-48 gap-20"
+  >
     <div class="flex flex-col gap-10 w-full max-w-[600px]">
       <h1 class="font-medium text-[88px] leading-20 tracking-tight">
         ./ La collecte du <span class="text-Z">ZEvent</span>
@@ -330,19 +356,19 @@ const timelineData: Timeline[] = [
   position: absolute;
   bottom: 0;
 
-  display: flex;
+  /*display: flex;
   flex-direction: column;
   text-align: center;
   justify-content: center;
   align-items: center;
-  z-index: 0;
+  z-index: 0;*/
 
   h1 {
     text-wrap: balance;
-    font-size: 80px;
+    /*font-size: 80px;*/
     font-weight: 500;
     line-height: 100%; /* 80px */
-    letter-spacing: -4px;
+    /*letter-spacing: -4px;*/
   }
 }
 

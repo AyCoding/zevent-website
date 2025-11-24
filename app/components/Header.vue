@@ -1,13 +1,16 @@
 <script setup lang="ts"></script>
 
 <template>
-  <header id="top" class="flex justify-between px-14 pt-6 fixed w-full">
+  <header
+    id="top"
+    class="lg:flex justify-between px-14 pt-6 fixed w-full hidden"
+  >
     <div class="left flex gap-4">
       <CTANav to="/">Accueil</CTANav>
       <CTANav to="/associations">Associations</CTANav>
       <CTANav to="/streamers">Streamers</CTANav>
       <CTANav to="/clips">Clips</CTANav>
-      <CTANav to="/statistiques">Statistiques</CTANav>
+      <!-- <CTANav to="/statistiques">Statistiques</CTANav> -->
     </div>
     <div class="right flex gap-4">
       <CTANavExternal to="https://place.zevent.fr/">ZPlace</CTANavExternal>
@@ -18,8 +21,8 @@
       <CTASpecial to="https://zevent.fr/don/">Faire un don</CTASpecial>
     </div>
   </header>
-  <div class="protection"></div>
-  <div class="logo">
+  <div class="protection hidden lg:block"></div>
+  <div class="logo hidden lg:block">
     <img src="/Logo-small.png" alt="" class="" />
   </div>
 </template>

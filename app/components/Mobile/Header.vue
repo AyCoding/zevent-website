@@ -2,7 +2,7 @@
 
 <template>
   <div
-    class="fixed z-2000 bottom-0 left-0 flex justify-center w-full bg-linear-to-t from-black to-black/0 text-white"
+    class="fixed z-3000 bottom-0 left-0 flex justify-center w-full bg-linear-to-t from-black to-black/0 text-white"
   >
     <MobileLink to="/" img="/icons/Home.svg">Accueil</MobileLink>
     <MobileLink to="/associations" img="/icons/Assos.svg"

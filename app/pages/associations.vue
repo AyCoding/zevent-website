@@ -48,7 +48,7 @@ const currentComponent = computed(() => {
   <HeroTitle>./Associations</HeroTitle>
   <div class="pt-[364px]">
     <div
-      class="sticky top-[100px] z-2000 flex justify-center mx-auto p-1 rounded-[48px] bg-[#292931] w-fit gap-px border border-white/10 shadow-lg"
+      class="sticky top-[100px] z-2000 flex flex-wrap justify-center mx-auto p-1 rounded-[48px] bg-[#292931] w-fit gap-px border border-white/10 shadow-lg"
     >
       <button
         v-for="association in associations"

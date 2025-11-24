@@ -61,7 +61,9 @@ const filteredStreamers = computed<Streamer[]>(() => {
   <HeroTitle>./Streamers</HeroTitle>
 
   <div class="pt-[364px]">
-    <div class="sticky top-[100px] z-2000 flex gap-4 justify-center w-full">
+    <div
+      class="sticky top-[100px] z-2000 flex flex-wrap gap-4 justify-center w-full"
+    >
       <div
         class="flex justify-center p-1 rounded-[48px] bg-[#292931] w-fit gap-px border border-white/10"
       >

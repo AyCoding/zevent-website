@@ -2,8 +2,10 @@
 
 <template>
   <div class="pt-[36px] pb-40">
-    <div class="flex bg-[#16161B] mx-auto max-w-screen-xl p-6 rounded-2xl">
-      <div class="flex flex-col gap-8 p-11 max-w-[355px] w-full">
+    <div
+      class="flex flex-col lg:flex-row bg-[#16161B] mx-auto max-w-screen-xl p-6 rounded-2xl"
+    >
+      <div class="flex flex-col gap-8 p-11 lg:max-w-[355px] w-full">
         <img src="/logos/helebor.png" alt="" class="bg-white" />
 
         <CTAMain to="https://www.helebor.fr/" target="_blank">

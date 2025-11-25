@@ -3,6 +3,7 @@ defineProps<{
   img: string
 }>()
 </script>
+
 <template>
   <NuxtLink>
     <div
@@ -13,3 +14,16 @@ defineProps<{
     </div>
   </NuxtLink>
 </template>
+
+<style scoped>
+.router-link-active img,
+.router-link-exact-active img {
+  filter: brightness(0) saturate(100%) invert(73%) sepia(16%) saturate(6795%)
+    hue-rotate(95deg) brightness(97%) contrast(105%);
+}
+
+.router-link-active div,
+.router-link-exact-active div {
+  color: #02e869;
+}
+</style>

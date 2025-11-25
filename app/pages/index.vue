@@ -14,7 +14,7 @@ const timelineData: Timeline[] = [
   {
     cover: "/zevent2025.jpg",
     edition: 2025,
-    date: "04-07 septembre 2025",
+    date: "04-07 septembre 2025 — 9e édition",
     amount_raised: 16179096,
     charities: [
       {
@@ -51,7 +51,7 @@ const timelineData: Timeline[] = [
   {
     cover: "/zevent2024.png",
     edition: 2024,
-    date: "05-08 septembre 2024",
+    date: "05-08 septembre 2024 — 8e édition",
     amount_raised: 10145881,
     charities: [
       {
@@ -79,7 +79,7 @@ const timelineData: Timeline[] = [
   {
     cover: "/zevent2022.png",
     edition: 2022,
-    date: "08-11 septembre 2022",
+    date: "08-11 septembre 2022 — 7e édition",
     amount_raised: 10182126,
     charities: [
       {
@@ -103,7 +103,7 @@ const timelineData: Timeline[] = [
   {
     cover: "/zevent2021.png",
     edition: 2021,
-    date: "28-31 octobre 2021",
+    date: "28-31 octobre 2021 — 6e édition",
     amount_raised: 10064480,
     charities: [
       {
@@ -115,7 +115,7 @@ const timelineData: Timeline[] = [
   {
     cover: "/zevent2020.png",
     edition: 2020,
-    date: "16-18 octobre 2020",
+    date: "16-18 octobre 2020 — 5e édition",
     amount_raised: 5724377,
     charities: [
       {
@@ -127,7 +127,7 @@ const timelineData: Timeline[] = [
   {
     cover: "/zevent2019.jpg",
     edition: 2019,
-    date: "20-22 septembre 2019",
+    date: "20-22 septembre 2019 — 4e édition",
     amount_raised: 3509878,
     charities: [
       {
@@ -139,7 +139,7 @@ const timelineData: Timeline[] = [
   {
     cover: "/zevent2018.jpg",
     edition: 2018,
-    date: "09-11 novembre 2018",
+    date: "09-11 novembre 2018 — 3e édition",
     amount_raised: 1094731,
     charities: [
       {
@@ -151,7 +151,7 @@ const timelineData: Timeline[] = [
   {
     cover: "/zevent2017.webp",
     edition: 2017,
-    date: "08-11 septembre 2017",
+    date: "08-11 septembre 2017 — 2e édition",
     amount_raised: 451851,
     charities: [
       {
@@ -163,7 +163,7 @@ const timelineData: Timeline[] = [
   {
     cover: "/zevent2016.jpg",
     edition: 2016,
-    date: "04-06 mars 2016",
+    date: "04-06 mars 2016 — 1ère édition",
     amount_raised: 170770,
     charities: [
       {
@@ -185,7 +185,7 @@ const timelineData: Timeline[] = [
       <h1 class="text-[40px] lg:text-[80px] tracking-[-1px] lg:tracking-[-4px]">
         L'évènement caritatif qui récolte des fonds pour la solidarité
       </h1>
-      <div class="pt-20 flex lg:px-6 gap-4">
+      <div class="pt-12 lg:pt-20 flex lg:px-6 gap-4">
         <div class="flex flex-col text-start text-pretty gap-4 m-2 w-40">
           <h2
             class="text-[32px] lg:text-[40px] font-semibold text-[#02E869] tracking-tight"
@@ -203,7 +203,7 @@ const timelineData: Timeline[] = [
           <p>Collecte de fonds en stream</p>
         </div>
       </div>
-      <div class="flex gap-2 mt-20">
+      <div class="flex gap-2 mt-12 lg:mt-20">
         <CTAMain @click="scrollToDiscover" class="hidden lg:block"
           >Découvrir l’événement</CTAMain
         >
@@ -325,7 +325,7 @@ const timelineData: Timeline[] = [
 <style scoped>
 .hero-video {
   width: 100%;
-  height: 1000px;
+  height: 100vh;
   max-height: 100%;
   position: relative;
   display: flex;

@@ -6,9 +6,9 @@ const props = defineProps<{
   photo?: string
 }>()
 
-const { data: live_status } = useFetch(
-  () => `/api/live_status/${props.streamer.twitch}`,
-)
+// const { data: live_status } = useFetch(
+//   () => `/api/live_status/${props.streamer.twitch}`,
+// )
 
 // ? Créer une fonction pour faire les 100 premiers streamers et les 100 suivants…
 // Pour limité le nombre de requête, sinon, par défaut, la requête fait une demande pour chaque streamers
@@ -33,16 +33,11 @@ const streamer_photo = [
   "flamby",
 ]
 
+// Gestion des photos
 const streamer_filter = computed(() => {
   const twitch = props.streamer.twitch
   return streamer_photo.includes(twitch) ? twitch : null
 })
-
-// TODO : Faire un emit pour envoyer au parent l'information que le streamer est bien en live ???
-// defineEmits(["isLive"])
-// if (live_status.length) {
-//   emit("isLive")
-// }
 </script>
 
 <template>
@@ -50,7 +45,7 @@ const streamer_filter = computed(() => {
     :href="`https://twitch.tv/${streamer.twitch}`"
     target="_blank"
     rel="noopener noreferrer"
-    class="streamer-cards bg-[#080808] w-full h-[400px] min-w-[280px] max-w-[400px] relative rounded-2xl overflow-hidden border border-white/10"
+    class="streamer-cards bg-[#080808] w-full h-[400px] min-w-[280px] max-w-[333px] relative rounded-2xl overflow-hidden border border-white/10"
   >
     <div
       class="flex flex-1 text-xs font-normal leading-4 absolute right-0 p-1 m-2 z-10"

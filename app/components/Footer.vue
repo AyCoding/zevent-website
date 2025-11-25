@@ -1,11 +1,11 @@
 <script setup lang="ts">
 function scrollToTop() {
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  window.scrollTo({ top: 0, behavior: "smooth" })
 }
 </script>
 
 <template>
-  <footer class="">
+  <footer class="px-4">
     <div class="flex flex-col items-center gap-11 py-36">
       <img src="/logo-secondary.png" alt="" />
       <div class="flex justify-center gap-3">
@@ -33,7 +33,7 @@ function scrollToTop() {
         Haut de la page ↑
       </CTAGhost>
     </div>
-    <div class="flex flex-col items-center pb-4 gap-1 text-sm">
+    <!-- <div class="flex flex-col items-center pb-4 gap-1 text-sm">
       <div>
         <p>
           Fait par
@@ -69,7 +69,7 @@ function scrollToTop() {
           </a>
         </p>
       </div>
-    </div>
+    </div> -->
   </footer>
 </template>
 

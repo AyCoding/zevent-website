@@ -179,7 +179,7 @@ const timelineData: Timeline[] = [
   <div class="hero-video">
     <video src="/HEADER-ZEVENT.mp4" autoplay muted loop></video>
     <div
-      class="hero-content px-4 flex flex-col justify-center lg:items-center lg:text-center"
+      class="hero-content px-4 flex flex-col justify-center lg:items-center lg:text-center lg:pt-25"
     >
       <img src="/Logo-small.png" alt="" class="w-[140px] pb-10 lg:hidden" />
       <h1
@@ -187,7 +187,7 @@ const timelineData: Timeline[] = [
       >
         L'évènement caritatif qui récolte des fonds pour la solidarité
       </h1>
-      <div class="pt-8 lg:pt-20 flex lg:px-6 gap-4">
+      <div class="pt-8 flex lg:px-6 gap-4">
         <div class="flex flex-col text-start text-pretty gap-4 m-2 w-40">
           <h2
             class="text-[32px] lg:text-[40px] font-semibold text-[#02E869] tracking-tight"
@@ -205,7 +205,7 @@ const timelineData: Timeline[] = [
           <p>Collecte de fonds en stream</p>
         </div>
       </div>
-      <div class="flex gap-2 mt-8 lg:mt-20">
+      <div class="flex gap-2 mt-8">
         <CTAMain @click="scrollToDiscover" class="hidden lg:block"
           >Découvrir l’événement</CTAMain
         >

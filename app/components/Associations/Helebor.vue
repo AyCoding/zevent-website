@@ -5,16 +5,18 @@
     <div
       class="flex flex-col lg:flex-row bg-[#16161B] mx-auto max-w-screen-xl p-6 rounded-2xl"
     >
-      <div class="flex flex-col gap-8 p-11 lg:max-w-[355px] w-full">
+      <div class="flex flex-col gap-8 lg:p-11 lg:max-w-[355px] w-full">
         <img src="/logos/helebor.png" alt="" class="bg-white" />
 
         <CTAMain to="https://www.helebor.fr/" target="_blank">
           Site officiel
         </CTAMain>
       </div>
-      <div class="p-11">
+      <div class="pt-11 lg:p-11">
         <div class="flex flex-col gap-6">
-          <h2 class="text-[32px] font-semibold text-pretty">Helebor</h2>
+          <h2 class="text-2xl lg:text-[32px] font-semibold text-pretty">
+            Helebor
+          </h2>
           <div class="flex flex-col gap-4">
             <p class="leading-7">
               HELEBOR crée et développe des projets en soins palliatifs qui
@@ -22,7 +24,7 @@
               gravement malades et de leurs proches.
             </p>
           </div>
-          <h2 class="text-[32px] font-semibold text-pretty pt-20">
+          <h2 class="text-2xl lg:text-[32px] font-semibold text-pretty pt-20">
             A quoi serviront les fonds récoltés ?
           </h2>
           <p class="leading-7">

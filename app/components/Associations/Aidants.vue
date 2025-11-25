@@ -5,16 +5,16 @@
     <div
       class="flex flex-col lg:flex-row bg-[#16161B] mx-auto max-w-screen-xl p-6 rounded-2xl"
     >
-      <div class="flex flex-col gap-8 p-11 lg:max-w-[355px] w-full">
+      <div class="flex flex-col gap-8 lg:p-11 lg:max-w-[355px] w-full">
         <img src="/logos/aidants.png" alt="" />
 
         <CTAMain to="https://www.aidants.fr/" target="_blank">
           Site officiel
         </CTAMain>
       </div>
-      <div class="p-11">
+      <div class="pt-11 lg:p-11">
         <div class="flex flex-col gap-6">
-          <h2 class="text-[32px] font-semibold text-pretty">
+          <h2 class="text-2xl lg:text-[32px] font-semibold text-pretty">
             Association Française des Aidants
           </h2>
           <div class="flex flex-col gap-4">
@@ -45,7 +45,7 @@
               </ul>
             </div>
           </div>
-          <h2 class="text-[32px] font-semibold text-pretty pt-20">
+          <h2 class="text-2xl lg:text-[32px] font-semibold text-pretty pt-20">
             A quoi serviront les fonds récoltés ?
           </h2>
           <div class="flex flex-col gap-4">

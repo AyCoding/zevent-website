@@ -5,7 +5,7 @@
     <div
       class="flex flex-col lg:flex-row bg-[#16161B] mx-auto max-w-screen-xl p-6 rounded-2xl"
     >
-      <div class="flex flex-col gap-8 p-11 lg:max-w-[355px] w-full">
+      <div class="flex flex-col gap-8 lg:p-11 lg:max-w-[355px] w-full">
         <img src="/logos/fdf.png" alt="" />
         <p class="font-normal leading-7">
           Pour le ZEvent 2025, la Fondation de France assure la collecte des
@@ -20,9 +20,9 @@
           Site officiel
         </CTAMain>
       </div>
-      <div class="p-11">
+      <div class="pt-11 lg:p-11">
         <div class="flex flex-col gap-6">
-          <h2 class="text-[32px] font-semibold text-pretty">
+          <h2 class="text-2xl lg:text-[32px] font-semibold text-pretty">
             La Fondation de France, premier réseau de philanthropie en France
           </h2>
           <div class="flex flex-col gap-4">
@@ -48,7 +48,7 @@
               générosité des donateurs.
             </p>
           </div>
-          <h2 class="text-[32px] font-semibold text-pretty pt-20">
+          <h2 class="text-2xl lg:text-[32px] font-semibold text-pretty pt-20">
             Quel rôle joue la Fondation de France pour le ZEvent 2025 ?
           </h2>
           <div class="flex flex-col gap-4">

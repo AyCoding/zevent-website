@@ -6,9 +6,9 @@ const props = defineProps<{
   photo?: string
 }>()
 
-// const { data: live_status } = useFetch(
-//   () => `/api/live_status/${props.streamer.twitch}`,
-// )
+const { data: live_status } = useFetch(
+  () => `/api/live_status/${props.streamer.twitch}`,
+)
 
 // ? Créer une fonction pour faire les 100 premiers streamers et les 100 suivants…
 // Pour limité le nombre de requête, sinon, par défaut, la requête fait une demande pour chaque streamers
@@ -202,14 +202,14 @@ const streamer_filter = computed(() => {
 @keyframes pulse {
   0% {
     transform: translate(-50%, -50%) scale(1);
-    opacity: 0.6;
+    opacity: 0.8;
   }
   70% {
-    transform: translate(-50%, -50%) scale(2.5);
+    transform: translate(-50%, -50%) scale(3);
     opacity: 0;
   }
   100% {
-    transform: translate(-50%, -50%) scale(3);
+    transform: translate(-50%, -50%) scale(4);
     opacity: 0;
   }
 }

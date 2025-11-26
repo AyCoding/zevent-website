@@ -25,9 +25,13 @@ const handleLiveStatusUpdate = (twitch: string, isLive: boolean) => {
   liveStatuses.value[twitch] = isLive
 }
 
-onMounted(() => {
-  streamer.value = streamersData.value?.live ?? []
-})
+watch(
+  streamersData,
+  (newData) => {
+    streamer.value = newData?.live ?? []
+  },
+  { immediate: true },
+)
 
 const filterMode = ref<"all" | "LAN" | "Online">("all")
 

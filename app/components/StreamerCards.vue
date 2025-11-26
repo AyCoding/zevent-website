@@ -6,12 +6,24 @@ const props = defineProps<{
   photo?: string
 }>()
 
+const emit = defineEmits<{
+  liveStatusUpdate: [twitch: string, isLive: boolean]
+}>()
+
 const { data: live_status } = useFetch(
   () => `/api/live_status/${props.streamer.twitch}`,
 )
 
-// ? Créer une fonction pour faire les 100 premiers streamers et les 100 suivants…
-// Pour limité le nombre de requête, sinon, par défaut, la requête fait une demande pour chaque streamers
+// Émettre le statut live vers le parent quand il change
+watch(
+  live_status,
+  (newStatus) => {
+    const isLive = !!(newStatus && newStatus.length > 0)
+    emit("liveStatusUpdate", props.streamer.twitch, isLive)
+  },
+  { immediate: true },
+)
+
 const streamer_photo = [
   "zerator",
   "ultia",

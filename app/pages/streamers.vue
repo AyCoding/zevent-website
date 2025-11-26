@@ -17,13 +17,17 @@ const { data: streamersData } = useAsyncData<{ live: Streamer[] }>(
   () => $fetch("/api/zevent"),
 )
 
-watch(
-  streamersData,
-  (newData) => {
-    streamer.value = newData?.live ?? []
-  },
-  { immediate: true },
-)
+// État local pour stocker les statuts live de chaque streamer
+const liveStatuses = ref<Record<string, boolean>>({})
+
+// Fonction pour mettre à jour le statut live d'un streamer
+const handleLiveStatusUpdate = (twitch: string, isLive: boolean) => {
+  liveStatuses.value[twitch] = isLive
+}
+
+onMounted(() => {
+  streamer.value = streamersData.value?.live ?? []
+})
 
 const filterMode = ref<"all" | "LAN" | "Online">("all")
 
@@ -45,13 +49,13 @@ const filteredStreamers = computed<Streamer[]>(() => {
     list = list.filter((s: Streamer) => s.location === "LAN")
   }
 
-  // Filter by live if the button is active
+  // Filter by live if the button is active (utilise maintenant liveStatuses)
   if (onLive.value) {
-    list = list.filter((s: Streamer) => s.live === true)
+    list = list.filter((s: Streamer) => liveStatuses.value[s.twitch] === true)
   }
 
   // Sort by Twitch username
-  return list.sort((a: Streamer, b: Streamer) =>
+  return list.toSorted((a: Streamer, b: Streamer) =>
     a.twitch.localeCompare(b.twitch, "fr", { sensitivity: "base" }),
   )
 })
@@ -199,6 +203,7 @@ const filteredStreamers = computed<Streamer[]>(() => {
         v-for="streamer in filteredStreamers"
         :key="streamer.twitch"
         :streamer="streamer"
+        @live-status-update="handleLiveStatusUpdate"
       />
     </div>
   </div>

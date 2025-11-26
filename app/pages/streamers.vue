@@ -7,12 +7,13 @@ useHead({
 })
 
 const onLive = ref(false)
-const buttonLive = () => {
+
+const toggleLiveFilter = () => {
   onLive.value = !onLive.value
 }
 
 const streamer = ref<Streamer[]>([])
-const { data: streamersData } = useAsyncData<{ live: Streamer[] }>(
+const { data: streamersData } = await useAsyncData<{ live: Streamer[] }>(
   "zevent",
   () => $fetch("/api/zevent"),
 )
@@ -36,6 +37,9 @@ watch(
 const filterMode = ref<"all" | "LAN" | "Online">("all")
 
 const showOnline = (event?: boolean) => {
+  // Désactiver le filtre "En live" quand on change de mode
+  // onLive.value = false
+
   if (event === true) filterMode.value = "Online"
   else if (event === false) filterMode.value = "LAN"
   else filterMode.value = "all"
@@ -117,7 +121,7 @@ const filteredStreamers = computed<Streamer[]>(() => {
             'h-10 flex justify-center items-center p-4 rounded-4xl cursor-pointer opacity-75 hover:opacity-100',
             onLive ? 'bg-[#FF5555] text-black opacity-100' : '',
           ]"
-          @click="buttonLive"
+          @click="toggleLiveFilter"
         >
           En live
         </button>

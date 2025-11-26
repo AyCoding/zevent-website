@@ -10,8 +10,11 @@ const emit = defineEmits<{
   liveStatusUpdate: [twitch: string, isLive: boolean]
 }>()
 
-const { data: live_status } = useFetch(
-  () => `/api/live_status/${props.streamer.twitch}`,
+// const { data: live_status } = useFetch(
+//   () => `/api/live_status/${props.streamer.twitch}`,
+// )
+const { data: live_status } = await useFetch(
+  `/api/live_status/${props.streamer.twitch}`,
 )
 
 // Émettre le statut live vers le parent quand il change

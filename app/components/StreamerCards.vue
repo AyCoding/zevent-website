@@ -47,6 +47,10 @@ const streamer_photo = [
   "antoinedaniel",
   "bagherajones",
   "alphacast",
+  "crocodyletv",
+  "byilhann",
+  "drfeelgood",
+  "avamind",
 ]
 
 // Gestion des photos

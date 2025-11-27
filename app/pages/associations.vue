@@ -50,19 +50,14 @@ const currentComponent = computed(() => {
     <div
       class="lg:sticky top-[100px] z-2000 flex flex-wrap justify-center mx-auto p-1 rounded-[48px] bg-[#292931] w-fit gap-px border border-white/10 shadow-lg"
     >
-      <button
+      <SegmentedItem
         v-for="association in associations"
         :key="association.id"
+        :active="activeId === association.id"
         @click="selectAssociation(association.id)"
-        :class="[
-          'h-10 flex justify-center items-center p-4 rounded-4xl cursor-pointer opacity-75 hover:opacity-100',
-          activeId === association.id
-            ? 'bg-[#02E869] text-black opacity-100'
-            : '',
-        ]"
       >
         {{ association.name }}
-      </button>
+      </SegmentedItem>
     </div>
 
     <component :is="currentComponent" />

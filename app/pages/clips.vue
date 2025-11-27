@@ -26,25 +26,41 @@ watchEffect(() => {
       <div
         class="flex justify-center p-1 rounded-[48px] bg-[#292931] w-fit gap-px border border-white/10"
       >
+        <SegmentedItem :active="true">Tops</SegmentedItem>
+        <SegmentedItem :active="false">Récents</SegmentedItem>
+      </div>
+      <div
+        class="flex justify-center p-1 rounded-[48px] bg-[#292931] w-fit gap-px border border-white/10"
+      >
         <button
           :class="[
-            'h-10 flex justify-center items-center p-4 rounded-4xl cursor-pointer text-black opacity-100 bg-[#02E869]',
-            /*filterMode === 'all'
-              ? 'text-black opacity-100 bg-[#02E869]'
-              : 'text-white opacity-75  hover:opacity-100',*/
-          ]"
-        >
-          Tops
-        </button>
-        <button
-          :class="[
-            'h-10 flex justify-center items-center p-4 rounded-4xl cursor-pointer',
+            'h-10 flex gap-1.5 justify-center items-center p-4 rounded-4xl opacity-75 hover:opacity-100 cursor-pointer',
             /*filterMode === 'LAN'
               ? 'text-black opacity-100 bg-[#02E869]'
               : 'opacity-75 hover:opacity-100',*/
           ]"
         >
-          Récents
+          Tous les jours
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="invert"
+          >
+            <g class="oi-chevron-down">
+              <path
+                class="oi-incomplete-triangle"
+                d="M18 10L12 16L6 10"
+                stroke="#000000"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </g>
+          </svg>
         </button>
       </div>
       <div
@@ -52,27 +68,37 @@ watchEffect(() => {
       >
         <button
           :class="[
-            'h-10 flex justify-center items-center p-4 rounded-4xl cursor-pointer',
-            /*filterMode === 'LAN'
-              ? 'text-black opacity-100 bg-[#02E869]'
-              : 'opacity-75 hover:opacity-100',*/
+            'h-10 flex gap-1.5 justify-center items-center p-4 rounded-4xl opacity-75 hover:opacity-100',
           ]"
         >
-          Dropdown here
-        </button>
-      </div>
-      <div
-        class="flex justify-center p-1 rounded-[48px] bg-[#292931] w-fit gap-px border border-white/10"
-      >
-        <button
-          :class="[
-            'h-10 flex justify-center items-center p-4 rounded-4xl cursor-pointer',
-            /*filterMode === 'LAN'
-              ? 'text-black opacity-100 bg-[#02E869]'
-              : 'opacity-75 hover:opacity-100',*/
-          ]"
-        >
-          Search bar
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="invert"
+          >
+            <g class="oi-search">
+              <path
+                class="oi-ellipse"
+                d="M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
+                stroke="#000000"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                class="oi-line"
+                d="M21 21L15 15"
+                stroke="#000000"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </g>
+          </svg>
+          <input type="text" placeholder="Rechercher" class="outline-none" />
         </button>
       </div>
     </div>

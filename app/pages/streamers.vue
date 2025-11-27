@@ -79,39 +79,22 @@ const filteredStreamers = computed<Streamer[]>(() => {
       <div
         class="flex justify-center p-1 rounded-[48px] bg-[#292931] w-fit gap-px border border-white/10"
       >
-        <button
-          :class="[
-            'h-10 flex justify-center items-center p-4 rounded-4xl cursor-pointer',
-            filterMode === 'all'
-              ? 'text-black opacity-100 bg-[#02E869]'
-              : 'text-white opacity-75  hover:opacity-100',
-          ]"
-          @click="showOnline()"
-        >
+        <SegmentedItem :active="filterMode === 'all'" @click="showOnline()">
           Tous
-        </button>
-        <button
-          :class="[
-            'h-10 flex justify-center items-center p-4 rounded-4xl cursor-pointer',
-            filterMode === 'LAN'
-              ? 'text-black opacity-100 bg-[#02E869]'
-              : 'opacity-75 hover:opacity-100',
-          ]"
+        </SegmentedItem>
+        <SegmentedItem
+          :active="filterMode === 'LAN'"
           @click="showOnline(false)"
         >
           Sur place
-        </button>
-        <button
-          :class="[
-            'h-10 flex justify-center items-center p-4 rounded-4xl cursor-pointer',
-            filterMode === 'Online'
-              ? 'text-black opacity-100 bg-[#02E869]'
-              : 'opacity-75 hover:opacity-100',
-          ]"
+        </SegmentedItem>
+
+        <SegmentedItem
+          :active="filterMode === 'Online'"
           @click="showOnline(true)"
         >
           À distance
-        </button>
+        </SegmentedItem>
       </div>
       <div
         class="flex justify-center p-1 rounded-[48px] bg-[#292931] w-fit gap-px border border-white/10"
@@ -134,36 +117,8 @@ const filteredStreamers = computed<Streamer[]>(() => {
             'h-10 flex gap-1.5 justify-center items-center p-4 rounded-4xl cursor-pointer opacity-75 hover:opacity-100',
           ]"
         >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            class="invert"
-          >
-            <g class="oi-arrow-up">
-              <path
-                class="oi-line"
-                d="M12 5L12 19"
-                stroke="#000000"
-                stroke-width="1.5"
-                stroke-miterlimit="10"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                class="oi-incomplete-triangle"
-                d="M6 11L12 5L18 11"
-                stroke="#000000"
-                stroke-width="1.5"
-                stroke-miterlimit="10"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </g>
-          </svg>
           Trier par
+          <img src="/icons/Sort.svg" alt="" />
         </button>
       </div>
 
